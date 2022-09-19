@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 namespace :git do
-  desc "TODO"
+  desc 'TODO'
   task :push, %i[commit_name skip_ci] => :environment do |_t, args|
     print "#{'#' * 5} Task Run! #{'#' * 5}\n"
 
@@ -12,5 +14,4 @@ namespace :git do
 
     print "#{'#' * 5} Task Done! #{'#' * 5}\n"
   end
-
 end

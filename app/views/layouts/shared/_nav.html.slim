@@ -1,0 +1,14 @@
+.container.mb-2
+  .d-flex.flex-wrap.align-items-center.py-2.border-bottom
+    .navbar.navbar-expand-md.navbar-light.me-auto
+      = link_to root_path, class: 'navbar-brand text-primary'
+        i.fa-solid.fa-home
+      ul.nav.nav-pills
+        li.nav-item.me-2
+          = link_to t('home'), root_path, current: root_path, class: 'navbar-brand text-primary'
+
+    ul.nav.nav-pills.flex-grow-1.navbar-nav
+      li.nav-item.d-flex.align-items-center.ms-auto
+        - I18n.available_locales.without(I18n.locale).each do |locale|
+          = link_to url_for(locale: locale) do
+            = image_tag asset_pack_path("media/images/flag-#{locale}.svg"), width: 25, alt: "switch language to #{locale}"
