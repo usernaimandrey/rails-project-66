@@ -1,4 +1,4 @@
-setup:
+setup: env-prepare
 	bin/setup
 	bin/rails db:seed
 
@@ -30,6 +30,9 @@ test:
 #аргумент commit=[commit_name,skip] skip - не обязателный
 push:
 	bin/rails git:push$(commit)
+
+env-prepare:
+	bin/rails env:prepare
 
 assets-compile:
 	bin/rails assets:clobber

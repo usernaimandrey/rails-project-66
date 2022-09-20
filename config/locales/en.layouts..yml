@@ -2,3 +2,6 @@ en:
   layouts:
     application:
       title: Quality of GitHub repositories
+    shared:
+      nav:
+        signup: Sign in with GitHub 

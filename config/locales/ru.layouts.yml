@@ -2,3 +2,6 @@ ru:
   layouts:
     application:
       title: Качество GitHub репозиториев
+    shared:
+      nav:
+        signup: Войти с помощью GitHub
