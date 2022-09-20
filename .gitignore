@@ -43,4 +43,4 @@ docker-compose.yml
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
-.env.env
+.env
