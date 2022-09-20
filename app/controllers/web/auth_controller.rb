@@ -7,7 +7,7 @@ module Web
       if user.persisted?
         redirect_to root_path, notice: t('.success')
       else
-        flash[:alert] = t('.failure')
+        flash[:alert] = t('.failure') # add locale
         redirect_to root_path
       end
     end
