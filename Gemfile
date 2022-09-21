@@ -55,8 +55,6 @@ group :production do
   gem 'pg'
 end
 
-gem 'active_form_model'
-
 gem 'omniauth'
 
 gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'

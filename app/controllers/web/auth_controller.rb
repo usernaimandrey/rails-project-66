@@ -4,10 +4,12 @@ module Web
   class AuthController < ApplicationController
     def callback
       user = GithubAuthService.call(auth)
-      if user.persisted?
-        redirect_to root_path, notice: t('.success')
+
+      if user.save
+        sign_in(user)
+        redirect_to root_path, notice: t('.success', user: user.name)
       else
-        flash[:alert] = t('.failure') # add locale
+        flash[:alert] = t('.failure')
         redirect_to root_path
       end
     end

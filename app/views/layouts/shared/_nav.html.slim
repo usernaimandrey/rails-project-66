@@ -8,11 +8,24 @@
           = link_to t('home'), root_path, current: root_path, class: 'navbar-brand text-primary'
 
     ul.nav.nav-pills
-      li.nav-item.me-2
-        = link_to auth_request_path('github'), method: :post, class: 'navbar-brand link-dark'
-          i.fa-brands.fa-github
-          span.m-2 = t('.signup')
-      li.nav-item.me-2
+      - if signed_in?
+        = image_tag(current_user.image_url, size: '50x50', alt: current_user&.email, class: 'rounded-circle')
+        li.nav-item.dropdown.me-2
+          = link_to(t('menu'), '#', class: 'nav-link dropdown-toggle', id: 'navbarDropdown', role: 'button', 'data-bs-toggle': 'dropdown', 'aria-expanded': 'false')
+          ul.dropdown-menu[aria-labelledby='navbarDropdown']
+            li
+              = link_to current_user&.nickname, root_path, class: 'dropdown-item'
+
+            li
+              = link_to t('sign_out'), session_path, method: :delete, class: 'dropdown-item'
+
+      - else
+        li.nav-item.me-2
+          = link_to auth_request_path('github'), method: :post, class: 'navbar-brand link-dark'
+            i.fa-brands.fa-github
+            span.m-2 = t('signup')
+
+      li.nav-item.me-2.m-2
         - I18n.available_locales.without(I18n.locale).each do |locale|
           = link_to url_for(locale: locale) do
             = image_tag asset_pack_path("media/images/flag-#{locale}.svg"), width: 25, alt: "switch language to #{locale}"
