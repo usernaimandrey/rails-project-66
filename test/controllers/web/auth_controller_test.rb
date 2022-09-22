@@ -6,7 +6,7 @@ class Web::AuthControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
   end
 
-  test 'create' do
+  test '#GitHub (new user)' do
     auth_hash = Faker::Omniauth.github
 
     OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash::InfoHash.new(auth_hash)
@@ -16,7 +16,7 @@ class Web::AuthControllerTest < ActionDispatch::IntegrationTest
 
     user = User.find_by!(email: auth_hash[:info][:email].downcase)
 
-    assert user
-    assert signed_in?
+    assert { user }
+    assert { signed_in? }
   end
 end

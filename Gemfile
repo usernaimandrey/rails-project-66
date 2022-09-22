@@ -55,7 +55,9 @@ group :production do
   gem 'pg'
 end
 
-gem 'omniauth'
+gem 'enumerize'
+
+gem 'octokit', '~> 5.0'
 
 gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
 
@@ -64,6 +66,8 @@ gem 'omniauth-rails_csrf_protection'
 gem 'rails-i18n'
 
 gem 'rollbar'
+
+gem 'simple_form'
 
 gem 'slim-rails'
 

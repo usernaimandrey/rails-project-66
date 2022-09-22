@@ -3,6 +3,7 @@ en:
   footer_title: "© Shlyapnikov Ltd, %{year}"
   link: 'https://ru.hexlet.io/u/farmacevt'
   menu: Menu
+  repositories: My repositories
   signup: Sign in
   sign_out: Log Out
   

@@ -1,0 +1,24 @@
+- provide :page_title, t('.title')
+
+h2 = t('.repositories')
+
+= link_to t('.new_repository'), new_repository_path, class: 'btn btn-primary'
+
+- if @repositories.present?
+  table.table.table-striped.table-hover.mb-5
+    thead
+      tr
+        th{ scope = 'col' } #
+        th{ scope = 'col' } = t('.name')
+        th{ scope = 'col' } = t('.language')
+        th{ scope = 'col' } = t('.check')
+        th
+    tbody
+      - @repositories&.each_with_index do |repository, i|
+        tr
+          th{ scope = 'row' } = i + 1
+          td = link_to repository.repo_name, '#', class: 'text-decoration-none'
+          td = repository.language
+          td -
+- else
+ p.m-2 = t('.first_repo')

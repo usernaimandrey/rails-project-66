@@ -10,6 +10,13 @@ module AuthConcern
     session.clear
   end
 
+  def authenticate_user!
+    return if signed_in?
+
+    flash[:alert] = t('.need_auth')
+    redirect_to root_path
+  end
+
   def signed_in?
     session[:user_id].present? && current_user.present?
   end

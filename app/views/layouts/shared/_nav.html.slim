@@ -5,16 +5,19 @@
         i.fa-solid.fa-home
       ul.nav.nav-pills
         li.nav-item.me-2
-          = link_to t('home'), root_path, current: root_path, class: 'navbar-brand text-primary'
+          = link_to t('home'), root_path, class: 'navbar-brand text-primary'
+        - if signed_in?
+          li.nav-item.me-2
+            = link_to t('repositories'), repositories_path, class: 'navbar-brand text-primary'
 
     ul.nav.nav-pills
       - if signed_in?
-        = image_tag(current_user.image_url, size: '50x50', alt: current_user&.email, class: 'rounded-circle')
+        = render_avatar
         li.nav-item.dropdown.me-2
           = link_to(t('menu'), '#', class: 'nav-link dropdown-toggle', id: 'navbarDropdown', role: 'button', 'data-bs-toggle': 'dropdown', 'aria-expanded': 'false')
           ul.dropdown-menu[aria-labelledby='navbarDropdown']
             li
-              = link_to current_user&.nickname, root_path, class: 'dropdown-item'
+              = link_to current_user&.nickname, repositories_path, class: 'dropdown-item'
 
             li
               = link_to t('sign_out'), session_path, method: :delete, class: 'dropdown-item'

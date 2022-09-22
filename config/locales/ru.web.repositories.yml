@@ -1,0 +1,15 @@
+---
+ru:
+  web:
+    repositories:
+      index:
+        check: Последняя проверка
+        first_repo: Добавьте свой первый репозиторий
+        name: Имя
+        new_repository: Новый репозиторий
+        language: Язык
+        need_auth: Вам нужно авторизоваться!
+        repositories: "Список репозиториев:"
+        title: Мои репозитории
+      new:
+        new_repository: Новый репозиторий

@@ -1,0 +1,13 @@
+---
+en:
+  web:
+    repositories:
+      index:
+        check: Last check passed
+        first_repo: Add your first repo
+        name: Name
+        new_repository: Add repo
+        language: Languege
+        repositories: 'List of the repo:'
+        need_auth: You need to login!
+        title: My repositories

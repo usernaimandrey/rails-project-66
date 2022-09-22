@@ -1,0 +1,5 @@
+- provide :page_title, t('.title')
+
+h3 = t('.new_repository')
+
+= render partial: 'web/repositories/form', locals: { repository: @repository }
