@@ -1,0 +1,15 @@
+---
+en:
+  activerecord:
+    attributes:
+      repository:
+        link: Link
+
+    errors:
+      models:
+        repository:
+          attributes:
+            link: 
+              blank: "cannot be blank"
+    models:
+      repository: Repository

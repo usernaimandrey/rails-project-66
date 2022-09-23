@@ -1,4 +1,5 @@
 en:
+  back: Back
   home: Home
   footer_title: "© Shlyapnikov Ltd, %{year}"
   link: 'https://ru.hexlet.io/u/farmacevt'

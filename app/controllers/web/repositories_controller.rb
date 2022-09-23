@@ -8,6 +8,10 @@ module Web
       @repositories = current_user&.repositories
     end
 
+    def show
+      @repository = current_user&.repositories&.find_by(id: params[:id])
+    end
+
     def new
       @repository = Repository.new
     end

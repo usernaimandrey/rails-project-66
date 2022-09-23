@@ -1,0 +1,16 @@
+---
+ru:
+  activerecord:
+    attributes:
+      repository:
+        link: Ссылка
+        repo_name: Название репозитория
+
+    errors:
+      models:
+        repository:
+          attributes:
+            link: 
+              blank: "не может быть пустой"
+    models:
+      repository: Репозиторий

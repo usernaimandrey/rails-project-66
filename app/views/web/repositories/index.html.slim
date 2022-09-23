@@ -17,7 +17,7 @@ h2 = t('.repositories')
       - @repositories&.each_with_index do |repository, i|
         tr
           th{ scope = 'row' } = i + 1
-          td = link_to repository.repo_name, '#', class: 'text-decoration-none'
+          td = link_to repository.repo_name, repository, class: 'text-decoration-none'
           td = repository.language
           td -
 - else

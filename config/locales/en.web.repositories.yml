@@ -11,3 +11,12 @@ en:
         repositories: 'List of the repo:'
         need_auth: You need to login!
         title: My repositories
+      create:
+        success: Repository create!
+      new:
+        new_repository: New Repository
+      show:
+        language: 'Language:'
+        repo_name: 'Name:'
+        repo_created_at: 'Create:'
+        repo_updated_at: 'Update:'

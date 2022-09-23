@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 2022_09_21_221351) do
     t.string "link"
     t.string "repo_name"
     t.string "language"
-    t.string "repo_created_at"
-    t.string "repo_updated_at"
+    t.datetime "repo_created_at"
+    t.datetime "repo_updated_at"
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
