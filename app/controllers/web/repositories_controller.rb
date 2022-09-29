@@ -14,14 +14,15 @@ module Web
 
     def new
       @repository = Repository.new
+      @links = current_user&.links
     end
 
     def create
       link = permitted_params[:link]
-      @repository = RepositoryService.call(link, current_user)
+      @repository = CreateRepositoryService.call(link, current_user)
 
       if @repository.save
-        redirect_to repositories_path, notice: t('.success') # add locale
+        redirect_to repositories_path, notice: t('.success')
       else
         flash.now[:alert] = t('.failure')
         render :new, status: :unprocessable_entity

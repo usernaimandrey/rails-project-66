@@ -29,11 +29,13 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails'
+  gem 'factory_bot_rails', '~> 6.2.0'
   gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
   gem 'rubocop-performance'
   gem 'rubocop-rails', require: false
   gem 'slim_lint'
   gem 'sqlite3', '~> 1.4'
+  gem 'webmock', '~> 3.18.1'
 end
 
 group :development do

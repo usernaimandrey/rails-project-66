@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-class RepositoryService
+class CreateRepositoryService
   class << self
     def call(link, user)
-      response = Octokit::Client.new(access_token: user&.token).repo(link)
-
+      client = Octokit::Client.new(access_token: user&.token, auto_paginate: true)
+      response = client.repo(link)
       attr = {
         link: link,
         repo_name: response[:name],

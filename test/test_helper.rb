@@ -3,14 +3,23 @@
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 require 'rails/test_help'
+require 'webmock/minitest'
 require_relative '../app/helpers/application_helper'
+
+WebMock.disable_net_connect!
 
 OmniAuth.config.test_mode = true
 
 class ActiveSupport::TestCase
+  include FactoryBot::Syntax::Methods
+
   parallelize(workers: :number_of_processors)
 
   fixtures :all
+
+  def load_fixture(filename)
+    File.read(File.dirname(__FILE__) + "/fixtures/#{filename}")
+  end
 end
 
 class ActionDispatch::IntegrationTest

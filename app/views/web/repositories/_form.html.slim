@@ -1,7 +1,4 @@
 = simple_form_for(repository) do |f|
-  = f.error_notification
-  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
-
-  = f.input :link, collection: collections_repositories
+  = f.input :link, collection: links
 
   = f.button :submit, class: 'btn btn-success mt-4 btn-block'

@@ -1,17 +1,17 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  link: 
-  repo_name: ivan/repo
-  language: MyString
-  repo_created_at: MyString
-  repo_updated_at: MyString
+  link: ivan/repo
+  repo_name: ruby
+  language: Ruby
+  repo_created_at: <%= Time.zone.now - 10.days %>
+  repo_updated_at: <%= Time.zone.now - 5.days %>
   user: one
 
 two:
   link: serg/repo
-  repo_name: MyString
-  language: MyString
-  repo_created_at: MyString
-  repo_updated_at: MyString
+  repo_name: java
+  language: Java
+  repo_created_at: <%= Time.zone.now - 10.days %>
+  repo_updated_at: <%= Time.zone.now - 5.days %>
   user: two
