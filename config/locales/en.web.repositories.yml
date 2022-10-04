@@ -12,6 +12,7 @@ en:
         need_auth: You need to login!
         title: My repositories
       create:
+        failure: Correct the mistakes
         success: Repository create!
       new:
         new_repository: New Repository

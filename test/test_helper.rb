@@ -5,6 +5,7 @@ require_relative '../config/environment'
 require 'rails/test_help'
 require 'webmock/minitest'
 require_relative '../app/helpers/application_helper'
+require_relative '../app/lib/application_container'
 
 WebMock.disable_net_connect!
 

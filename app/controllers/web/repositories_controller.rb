@@ -9,12 +9,12 @@ module Web
     end
 
     def show
-      @repository = current_user&.repositories&.find_by(id: params[:id])
+      @repository = current_user.repositories.find_by(id: params[:id])
     end
 
     def new
       @repository = Repository.new
-      @links = current_user&.links
+      @links = current_user.links_list
     end
 
     def create

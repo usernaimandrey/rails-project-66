@@ -11,9 +11,9 @@ class User < ApplicationRecord
 
   has_many :repositories, dependent: :destroy
 
-  def links
-    Rails.cache.fetch("#{cache_key_with_version}/links", expires_in: 1.hour) do
-      collections_repositories_links(self)
-    end
+  has_many :link_names, dependent: :destroy
+
+  def guest?
+    false
   end
 end

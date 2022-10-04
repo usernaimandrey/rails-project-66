@@ -57,6 +57,8 @@ group :production do
   gem 'pg'
 end
 
+gem 'dry-container'
+
 gem 'enumerize'
 
 gem 'octokit', '~> 5.0'

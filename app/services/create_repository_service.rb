@@ -3,7 +3,7 @@
 class CreateRepositoryService
   class << self
     def call(link, user)
-      client = Octokit::Client.new(access_token: user&.token, auto_paginate: true)
+      client = ApplicationContainer["octokit_#{user.id}"]
       response = client.repo(link)
       attr = {
         link: link,

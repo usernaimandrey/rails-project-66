@@ -103,6 +103,8 @@ GEM
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
       railties (>= 3.2)
+    dry-container (0.11.0)
+      concurrent-ruby (~> 1.0)
     enumerize (2.5.0)
       activesupport (>= 3.2)
     erubi (1.11.0)
@@ -333,6 +335,7 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   dotenv-rails
+  dry-container
   enumerize
   factory_bot_rails (~> 6.2.0)
   faker!

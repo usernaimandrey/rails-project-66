@@ -12,6 +12,7 @@ ru:
         repositories: "Список репозиториев:"
         title: Мои репозитории
       create:
+        failure: Исправьте ошибки
         success: Репозиторий успешно созданн!
       new:
         new_repository: Новый репозиторий
