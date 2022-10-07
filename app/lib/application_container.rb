@@ -7,5 +7,6 @@ class ApplicationContainer
     register :fetch_links, -> { FetchLinksGithubStub }
   else
     register :fetch_links, -> { FetchLinksGithub }
+    registred :javascript, -> { LinterCheckJavascript }
   end
 end

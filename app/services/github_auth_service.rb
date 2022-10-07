@@ -9,15 +9,8 @@ class GithubAuthService
       user.image_url = auth.info.image
       user.token = auth.credentials.token
 
-      register_dependensy(user.token, user.id) if user.valid?
-      links = ApplicationContainer[:fetch_links].fetch(user)
+      register_dependensy(user.token, user.id)
 
-      user.transaction do
-        user.save!
-        links.each do |link|
-          user.link_names.find_or_create_by(name: link)
-        end
-      end
       user
     rescue StandardError
       User.new
@@ -26,7 +19,7 @@ class GithubAuthService
     private
 
     def register_dependensy(token, id)
-      ApplicationContainer.register("octokit_#{id}", Octokit::Client.new(access_token: token, auto_paginate: true))
+      ApplicationContainer.register("octokit_#{id}".to_sym, Octokit::Client.new(access_token: token, auto_paginate: true))
     rescue Dry::Container::Error
       Rails.logger.debug 'Dpendency already registred'
     end

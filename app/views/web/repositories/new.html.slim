@@ -3,3 +3,7 @@
 h3 = t('.new_repository')
 
 = render partial: 'web/repositories/form', locals: { repository: @repository, links: @links }
+
+p.fw-lighter = t('.cache')
+
+= link_to t('.cache_reset'), cache_path, method: :delete, class: 'btn btn-primary'

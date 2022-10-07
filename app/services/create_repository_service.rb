@@ -7,6 +7,7 @@ class CreateRepositoryService
       response = client.repo(link)
       attr = {
         link: link,
+        clone_url: response[:clone_url],
         repo_name: response[:name],
         language: response[:language],
         repo_created_at: response[:created_at],

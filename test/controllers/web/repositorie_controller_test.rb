@@ -23,7 +23,6 @@ class Web::RepositoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test '#new' do
-    stub_request(:get, 'https://api.github.com/user/repos?per_page=100')
     get new_repository_path
 
     assert_response :success

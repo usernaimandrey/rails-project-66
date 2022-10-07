@@ -19,7 +19,7 @@ class Guest
     []
   end
 
-  def links_list
+  def links
     []
   end
 

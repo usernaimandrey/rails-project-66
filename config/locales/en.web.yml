@@ -1,5 +1,8 @@
 en:
   web:
+    aches:
+      destroy:
+        success: Cache flushed successfully!
     auth:
       callback:
         success: Welcome %{user}, you are successfully logged in!

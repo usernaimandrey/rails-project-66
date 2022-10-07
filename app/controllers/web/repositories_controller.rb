@@ -14,7 +14,7 @@ module Web
 
     def new
       @repository = Repository.new
-      @links = current_user.links_list
+      @links = current_user.links
     end
 
     def create

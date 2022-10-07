@@ -5,7 +5,7 @@ module Web
     def callback
       user = GithubAuthService.call(auth)
 
-      if user.persisted?
+      if user.save
         sign_in(user)
         redirect_to root_path, notice: t('.success', user: user.name)
       else

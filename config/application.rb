@@ -14,6 +14,7 @@ end
 
 GITHUB_CLIENT_ID = ENV.fetch('GITHUB_CLIENT_ID', nil)
 GITHUB_CLIENT_SECRET = ENV.fetch('GITHUB_CLIENT_SECRET', nil)
+DIR_REPO = ENV.fetch('DIR_REPO', nil)
 
 module GithubQuality
   class Application < Rails::Application

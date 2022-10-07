@@ -16,4 +16,11 @@ class User < ApplicationRecord
   def guest?
     false
   end
+
+  def links
+    client = ApplicationContainer[:fetch_links]
+    Rails.cache.fetch('links_cache', expires_in: 1.hour) do
+      client.fetch(self)
+    end
+  end
 end

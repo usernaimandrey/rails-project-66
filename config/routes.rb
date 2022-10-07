@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
     resource :session, only: :destroy
 
+    resource :cache, only: :destroy
+
     resources :repositories, only: %i[index show new create]
 
     post 'auth/:provider', to: 'auth#request', as: :auth_request
