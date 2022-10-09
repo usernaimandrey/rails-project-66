@@ -1,0 +1,3 @@
+one:
+  path: path/to/file/file.js
+  check: one

@@ -1,0 +1,32 @@
+- provide :page_title, t('.title')
+
+h2 = t('.check_title', id: @check.id)
+
+p = l(@check.created_at, format: :long)
+
+p = t('.status', state: @check.aasm.human_state)
+
+p = t('.check_passed', check_passed: @check.check_passed)
+
+p = t('.issues', count: '-')
+
+.d-flex
+  = link_to t('back'), :back, class: 'btn btn-outline-primary'
+
+hr
+
+table.table.table-striped.table-hover.mb-5
+    thead
+      tr
+        th{ scope = 'col' } = t('.message')
+        th{ scope = 'col' } = t('.rule')
+        th{ scope = 'col' } = t('.line_column')
+    tbody
+      - @file_paths.each do |path|
+        tr
+          td = sanitize t('.path', path: path.path)
+        - path.linter_errors.each do |error|
+          tr
+            td = error.message
+            td = error.rule
+            td = error.line_column

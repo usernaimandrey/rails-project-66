@@ -4,6 +4,11 @@ en:
     attributes:
       repository:
         link: Link
+      repository/check:
+        state: State
+        state/checking: Checking
+        state/finishing: Finished
+        state/faling: Faled
 
     errors:
       models:

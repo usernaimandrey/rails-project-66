@@ -9,5 +9,5 @@ class Repository < ApplicationRecord
 
   belongs_to :user
 
-  has_many :checks, class_name: 'Repository::Check', dependent: :destroy
+  has_many :checks, dependent: :destroy
 end

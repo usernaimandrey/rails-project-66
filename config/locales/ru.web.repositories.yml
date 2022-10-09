@@ -11,6 +11,10 @@ ru:
         need_auth: Вам нужно авторизоваться!
         repositories: "Список репозиториев:"
         title: Мои репозитории
+      checks:
+        create:
+          success: Проверка созданна!
+          fail: Ошибка!
       create:
         failure: Исправьте ошибки
         success: Репозиторий успешно созданн!
@@ -19,9 +23,16 @@ ru:
         cache_reset: Сбросить кеш!
         new_repository: Новый репозиторий
       show:
+        check: Проверить
+        check_passed: Результат проверки
+        created_at: Дата Создания
         language: 'Язык:'
+        no_checks: Нет проверок
         repo_name: 'Название репозитория:'
         repo_created_at: 'Дата создантя:'
         repo_updated_at: 'Дата обновления:'
+        reference: Последний коммит
+        state: Состояние
+        title: Репозитроий
 
 

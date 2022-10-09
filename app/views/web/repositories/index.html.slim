@@ -19,6 +19,6 @@ h2 = t('.repositories')
           th{ scope = 'row' } = i + 1
           td = link_to repository.repo_name, repository, class: 'text-decoration-none'
           td = repository.language
-          td -
+          td = repository&.checks&.last&.check_passed || '-'
 - else
  p.m-2 = t('.first_repo')

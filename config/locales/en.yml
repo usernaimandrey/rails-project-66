@@ -7,4 +7,21 @@ en:
   repositories: My repositories
   signup: Sign in
   sign_out: Log Out
+
+  date:
+    formats:
+      default: "%d-%m-%Y"
+      short: "%b %d"
+      long: "%B %d, %Y"
+
+    day_names: [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
+    abbr_day_names: [Sun, Mon, Tue, Wed, Thu, Fri, Sat]
+
+    month_names: [~, January, February, March, April, May, June, July, August, September, October, November, December]
+    abbr_month_names: [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
+  time:
+    formats:
+      default: "%d-%m-%Y %H:%M:%S"
+      short: "%d %B %H:%M"
+      long: "%B %d, %Y %H:%M"
   

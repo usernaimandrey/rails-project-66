@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class Repository::CheckTest < ActiveSupport::TestCase
+class Repository::Check::FilePathTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

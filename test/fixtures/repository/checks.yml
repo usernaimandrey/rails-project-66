@@ -1,3 +1,4 @@
 one:
+  state: checking
   check_passed: "false"
   repository: one

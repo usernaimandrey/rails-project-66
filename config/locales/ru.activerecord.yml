@@ -5,6 +5,11 @@ ru:
       repository:
         link: Ссылка
         repo_name: Название репозитория
+      repository/check:
+        state: Состояние
+        state/checking: Проверяется
+        state/finishing: Закончено
+        state/faling: Ошибка
 
     errors:
       models:

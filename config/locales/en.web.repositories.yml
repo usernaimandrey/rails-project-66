@@ -11,6 +11,10 @@ en:
         repositories: 'List of the repo:'
         need_auth: You need to login!
         title: My repositories
+      checks:
+        create:
+          success: Check was created!
+          fail: Error!
       create:
         failure: Correct the mistakes
         success: Repository create!
@@ -19,7 +23,14 @@ en:
         cache_reset: Reset cache!
         new_repository: New Repository
       show:
+        check: Check
+        check_passed: Result
+        created_at: Created at
+        no_checks: no checks
         language: 'Language:'
         repo_name: 'Name:'
         repo_created_at: 'Create:'
         repo_updated_at: 'Update:'
+        state: State
+        reference: Last commit
+        title: Repo page

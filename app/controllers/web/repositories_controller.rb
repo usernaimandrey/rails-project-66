@@ -5,11 +5,12 @@ module Web
     before_action :authenticate_user!
 
     def index
-      @repositories = current_user&.repositories
+      @repositories = current_user.repositories.includes(:checks).order(created_at: :desc)
     end
 
     def show
       @repository = current_user.repositories.find_by(id: params[:id])
+      @checks = @repository.checks.order(created_at: :desc)
     end
 
     def new

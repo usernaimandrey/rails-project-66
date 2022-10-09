@@ -1,0 +1,10 @@
+en:
+  web:
+    repositories:
+      checks:
+        show:
+          check_title: "Check #%{id}"
+          status: "Status: %{state}"
+          check_passed: "Result check: %{check_passed}"
+          issues: "Count issues: %{count}"
+          path: <a href="https://github.com/" class="fw-bolder">%{path}</a>

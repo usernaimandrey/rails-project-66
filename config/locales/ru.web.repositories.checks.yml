@@ -1,0 +1,10 @@
+ru:
+  web:
+    repositories:
+      checks:
+        show:
+          check_title: "Проверка #%{id}"
+          status: "Статус: %{state}"
+          check_passed: "Резкльтат проверки: %{check_passed}"
+          issues: "Количество ошибок: %{count}"
+          path: <a href="https://github.com/" class="fw-bolder">%{path}</a>

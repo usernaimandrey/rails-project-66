@@ -6,7 +6,7 @@ class CreateRepositories < ActiveRecord::Migration[6.1]
       t.string :language
       t.datetime :repo_created_at
       t.datetime :repo_updated_at
-      t.references :user, null: false, foreign_key: true, index: true
+      t.references :user, null: false, foreign_key: { on_delete: :cascade }, index: true
 
       t.timestamps
     end
