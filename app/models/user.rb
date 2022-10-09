@@ -11,8 +11,6 @@ class User < ApplicationRecord
 
   has_many :repositories, dependent: :destroy
 
-  has_many :link_names, dependent: :destroy
-
   def guest?
     false
   end

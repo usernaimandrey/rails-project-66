@@ -4,9 +4,11 @@ class LinterCheckJavascript
   class << self
     def check(repo_name)
       repo_path = "#{path}/#{repo_name}"
-      command = "node_modules/eslint/bin/eslint.js -c .eslintrc.yml -f json #{repo_path}"
-      _stdin, stdout, _stderr, _wait_thr = Open3.popen3(command)
-      JSON.parse(stdout.read.delete("\n"))
+      command = "node_modules/eslint/bin/eslint.js -f json #{repo_path}"
+      stdout_str, _status = Open3.capture2(command)
+      return JSON.parse(stdout_str) unless stdout_str.empty?
+
+      []
     end
 
     def path

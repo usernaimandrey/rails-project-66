@@ -8,4 +8,6 @@ class Repository < ApplicationRecord
   enumerize :language, in: %i[JavaScript]
 
   belongs_to :user
+
+  has_many :checks, class_name: 'Repository::Check', dependent: :destroy
 end

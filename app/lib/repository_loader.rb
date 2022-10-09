@@ -6,7 +6,10 @@ class RepositoryLoader
       mkdir
       repo_path = "#{path}/#{repo_name}"
       rm_dir(repo_path)
-      _stdin, _stdout, _stderr, _wait_thr = Open3.popen3("git clone #{clone_url} #{repo_path}")
+
+      Open3.capture2("git clone #{clone_url} #{repo_path}")
+
+      rm_config_lint(repo_path)
     end
 
     private
@@ -25,6 +28,13 @@ class RepositoryLoader
       return unless Dir.exist?(dir)
 
       FileUtils.rm_r(dir, force: true)
+    end
+
+    def rm_config_lint(repo_path)
+      Dir.entries(repo_path).each do |file|
+        delete_list = %w[package.json package-lock.json .eslintrc]
+        FileUtils.rm("#{repo_path}/#{file}") if delete_list.include?(file)
+      end
     end
   end
 end

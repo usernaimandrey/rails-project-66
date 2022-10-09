@@ -57,6 +57,8 @@ group :production do
   gem 'pg'
 end
 
+gem 'aasm', '~> 5.4.0'
+
 gem 'dry-container'
 
 gem 'enumerize'
