@@ -10,7 +10,7 @@ class Repository::Check < ApplicationRecord
 
   belongs_to :repository
 
-  has_many :file_paths, dependent: :destroy
+  has_many :linter_error, dependent: :destroy
 
   aasm column: :state do
     state :checking, initial: true

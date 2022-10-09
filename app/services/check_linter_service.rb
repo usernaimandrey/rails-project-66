@@ -10,15 +10,16 @@ class CheckLinterService
 
       ActiveRecord::Base.transaction do
         result.each do |data_check|
-          file_path = check.file_paths.build(path: data_check['filePath'])
+          file_path = data_check['filePath']
           data_check['messages'].each do |message|
-            file_path.save
-            error = file_path.linter_errors.build(
+            linter_error = check.linter_error.build(
+              file_path: file_path,
               message: message['message'],
               rule: message['ruleId'],
               line_column: "#{message['line']} : #{message['column']}"
             )
-            error.save!
+
+            linter_error.save!
           end
         end
       end

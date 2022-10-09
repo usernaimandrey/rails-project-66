@@ -4,6 +4,7 @@ ru:
   footer_title: "© Шляпников Ltd, %{year}"
   link: 'https://ru.hexlet.io/u/farmacevt'
   menu: Меню
+  need_auth: Вам нужно авторизоваться
   repositories: Мои репозитории
   signup: Войти
   sign_out: Выход

@@ -3,8 +3,8 @@
 module Web
   class Repositories::ChecksController < Repositories::ApplicationController
     def show
-      @check = resource_repo.checks.includes(:file_paths).find_by(id: params[:id])
-      @file_paths = @check.file_paths
+      @check = resource_repo.checks.includes(:linter_error).find_by(id: params[:id])
+      @errors = @check&.linter_error
     end
 
     def create

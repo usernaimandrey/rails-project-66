@@ -12,12 +12,9 @@ class Guest
   def token; end
 
   def image_url; end
-
   def nickname; end
 
-  def repositories
-    []
-  end
+  def repositories; end
 
   def links
     []

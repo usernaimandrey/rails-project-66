@@ -1,5 +1,6 @@
 one:
+  file_path: path/to/file.js
   message: MyString
   rule: MyString
   line_column: MyString
-  file_path: one
+  check: one

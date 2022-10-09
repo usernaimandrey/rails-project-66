@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_09_135242) do
+ActiveRecord::Schema.define(version: 2022_10_09_221512) do
 
   create_table "repositories", force: :cascade do |t|
     t.string "link"
@@ -26,22 +26,15 @@ ActiveRecord::Schema.define(version: 2022_10_09_135242) do
     t.index ["user_id"], name: "index_repositories_on_user_id"
   end
 
-  create_table "repository_check_file_path_linter_errors", force: :cascade do |t|
+  create_table "repository_check_linter_errors", force: :cascade do |t|
     t.string "message"
     t.string "rule"
     t.string "line_column"
-    t.integer "file_path_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["file_path_id"], name: "index_repository_check_file_path_linter_errors_on_file_path_id"
-  end
-
-  create_table "repository_check_file_paths", force: :cascade do |t|
-    t.string "path"
+    t.string "file_path"
     t.integer "check_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["check_id"], name: "index_repository_check_file_paths_on_check_id"
+    t.index ["check_id"], name: "index_repository_check_linter_errors_on_check_id"
   end
 
   create_table "repository_checks", force: :cascade do |t|
@@ -50,6 +43,7 @@ ActiveRecord::Schema.define(version: 2022_10_09_135242) do
     t.integer "repository_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "errors_count"
     t.index ["repository_id"], name: "index_repository_checks_on_repository_id"
   end
 
@@ -65,7 +59,6 @@ ActiveRecord::Schema.define(version: 2022_10_09_135242) do
   end
 
   add_foreign_key "repositories", "users", on_delete: :cascade
-  add_foreign_key "repository_check_file_path_linter_errors", "repository_check_file_paths", column: "file_path_id", on_delete: :cascade
-  add_foreign_key "repository_check_file_paths", "repository_checks", column: "check_id", on_delete: :cascade
+  add_foreign_key "repository_check_linter_errors", "repository_checks", column: "check_id", on_delete: :cascade
   add_foreign_key "repository_checks", "repositories", on_delete: :cascade
 end
