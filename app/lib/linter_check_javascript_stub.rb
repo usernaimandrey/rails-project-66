@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class LinterCheckJavascript
+class LinterCheckJavascriptStub
   class << self
     def check(repo_name)
       repo_path = "#{path}/#{repo_name}"
@@ -12,7 +12,7 @@ class LinterCheckJavascript
     end
 
     def path
-      Rails.root.join(DIR_REPO)
+      'test/fixtures/files'
     end
   end
 end

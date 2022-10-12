@@ -1,4 +1,9 @@
 one:
   state: checking
   check_passed: "false"
-  repository: one
+  repository: repo_js_valid
+
+two:
+  state: checking
+  check_passed: "false"
+  repository: repo_js_invalid

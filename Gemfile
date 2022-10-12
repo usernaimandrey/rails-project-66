@@ -61,6 +61,8 @@ gem 'aasm', '~> 5.4.0'
 
 gem 'dry-container'
 
+gem 'pundit', '~> 2.2.0'
+
 gem 'enumerize'
 
 gem 'octokit', '~> 5.0'

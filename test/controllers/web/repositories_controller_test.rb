@@ -4,7 +4,7 @@ require 'test_helper'
 
 class Web::RepositoriesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @user = FactoryBot.create(:user)
+    @user = users(:one)
     sign_in @user
   end
 
@@ -20,6 +20,14 @@ class Web::RepositoriesControllerTest < ActionDispatch::IntegrationTest
     get repositories_path
 
     assert_redirected_to root_path default_url_options
+  end
+
+  test '#show' do
+    repo = FactoryBot.create(:repository, user: @user)
+
+    get repository_path(repo)
+
+    assert_response :success
   end
 
   test '#new' do

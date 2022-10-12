@@ -1,0 +1,6 @@
+---
+ru:
+  pundit:
+    default: You are not the author!
+    repository_policy:
+      show?: You can not view unpublished ads!

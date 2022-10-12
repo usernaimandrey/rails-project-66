@@ -8,6 +8,14 @@ class CheckLinterService
       ApplicationContainer[:git_clone].git_clone(clone_url, repo_name)
       result = ApplicationContainer[repo.language.downcase.to_sym].check(repo_name)
 
+      if result.empty?
+        ActiveRecord::Base.transaction do
+          check.update(check_passed: 'true')
+          check.finish!
+        end
+        return
+      end
+
       ActiveRecord::Base.transaction do
         result.each do |data_check|
           file_path = data_check['filePath']
@@ -22,7 +30,10 @@ class CheckLinterService
             linter_error.save!
           end
         end
+        check.finish!
       end
+    rescue StandardError
+      check.fail!
     end
   end
 end

@@ -1,17 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+repo_js_valid:
   link: ivan/repo
-  repo_name: ruby
-  language: Ruby
+  clone_url: http://github.git
+  repo_name: repo_js_valid
+  language: JavaScript
   repo_created_at: <%= Time.zone.now - 10.days %>
   repo_updated_at: <%= Time.zone.now - 5.days %>
   user: one
 
-two:
+repo_js_invalid:
   link: serg/repo
-  repo_name: java
-  language: Java
+  clone_url: http://github.git
+  repo_name: repo_js_invalid
+  language: JavaScript
   repo_created_at: <%= Time.zone.now - 10.days %>
   repo_updated_at: <%= Time.zone.now - 5.days %>
-  user: two
+  user: one
