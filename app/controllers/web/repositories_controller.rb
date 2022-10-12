@@ -3,11 +3,10 @@
 module Web
   class RepositoriesController < ApplicationController
     before_action :authenticate_user!
-    after_action :verify_authorized, only: %i[index show]
+    after_action :verify_authorized, only: %i[show]
 
     def index
       @repositories = current_user.repositories.includes(:checks).order(created_at: :desc)
-      authorize @repositories[0]
     end
 
     def show

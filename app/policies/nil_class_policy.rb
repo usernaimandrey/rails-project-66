@@ -7,10 +7,6 @@ class NilClassPolicy < ApplicationPolicy
     end
   end
 
-  def index?
-    false
-  end
-
   def show?
     false
   end

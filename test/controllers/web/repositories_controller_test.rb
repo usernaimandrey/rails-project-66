@@ -4,7 +4,7 @@ require 'test_helper'
 
 class Web::RepositoriesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @user = users(:one)
+    @user = FactoryBot.create(:user)
     sign_in @user
   end
 
