@@ -31,8 +31,6 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'factory_bot_rails', '~> 6.2.0'
   gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
-  gem 'rubocop-performance'
-  gem 'rubocop-rails', require: false
   gem 'slim_lint'
   gem 'sqlite3', '~> 1.4'
   gem 'webmock', '~> 3.18.1'
@@ -41,7 +39,6 @@ end
 group :development do
   gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
-  gem 'rubocop'
   gem 'spring'
   gem 'web-console', '>= 4.1.0'
 end
@@ -74,6 +71,12 @@ gem 'omniauth-rails_csrf_protection'
 gem 'rails-i18n'
 
 gem 'rollbar'
+
+gem 'rubocop'
+
+gem 'rubocop-performance'
+
+gem 'rubocop-rails', require: false
 
 gem 'simple_form'
 

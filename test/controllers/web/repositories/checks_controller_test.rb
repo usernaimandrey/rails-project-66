@@ -48,4 +48,28 @@ class Web::Repositories::ChecksControllerTest < ActionDispatch::IntegrationTest
     assert_not(check.errors_count.nil?)
     assert { check.finishing? }
   end
+
+  test 'create check with valid ruby repo' do
+    repo = repositories(:repo_rb_valid)
+    assert_difference 'repo.checks.count' do
+      post repository_checks_path(repo)
+    end
+    check = repo.checks.last
+
+    assert_redirected_to repo
+    assert { check.errors_count.nil? }
+    assert { check.finishing? }
+  end
+
+  test 'create check with invalid ruby repo' do
+    repo = repositories(:repo_rb_invalid)
+    assert_difference 'repo.checks.count' do
+      post repository_checks_path(repo)
+    end
+    check = repo.checks.last
+
+    assert_redirected_to repo
+    assert_not(check.errors_count.nil?)
+    assert { check.finishing? }
+  end
 end

@@ -32,7 +32,7 @@ class RepositoryLoader
 
     def rm_config_lint(repo_path)
       Dir.entries(repo_path).each do |file|
-        delete_list = %w[package.json package-lock.json .eslintrc.yml]
+        delete_list = %w[package.json package-lock.json .eslintrc.yml .rubocop.yml]
         FileUtils.rm("#{repo_path}/#{file}") if delete_list.include?(file)
       end
     end

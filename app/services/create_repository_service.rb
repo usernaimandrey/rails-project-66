@@ -9,7 +9,7 @@ class CreateRepositoryService
         link: link,
         clone_url: response[:clone_url],
         repo_name: response[:name],
-        language: response[:language],
+        language: response[:language]&.downcase,
         repo_created_at: response[:created_at],
         repo_updated_at: response[:updated_at]
       }

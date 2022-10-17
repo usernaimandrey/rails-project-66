@@ -13,8 +13,6 @@ AllCops:
     - 'db/migrate/**'
     - 'vendor/**/*'
     - 'node_modules/**/*'
-    - 'tmp/**/*'
-    - 'test/fixtures/files/**/*'
 
 Style/ClassAndModuleChildren:
   Enabled: false

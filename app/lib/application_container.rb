@@ -7,9 +7,11 @@ class ApplicationContainer
     register :fetch_links, -> { FetchLinksGithubStub }
     register :git_clone, -> { RepositoryLoaderStub }
     register :javascript, -> { LinterCheckJavascriptStub }
+    register :ruby, -> { LinterCheckRubyStub }
   else
     register :fetch_links, -> { FetchLinksGithub }
     register :git_clone, -> { RepositoryLoader }
     register :javascript, -> { LinterCheckJavascript }
+    register :ruby, -> { LinterCheckRuby }
   end
 end

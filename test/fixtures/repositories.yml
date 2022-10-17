@@ -4,7 +4,7 @@ repo_js_valid:
   link: ivan/repo
   clone_url: http://github.git
   repo_name: repo_js_valid
-  language: JavaScript
+  language: javascript
   repo_created_at: <%= Time.zone.now - 10.days %>
   repo_updated_at: <%= Time.zone.now - 5.days %>
   user: one
@@ -13,7 +13,25 @@ repo_js_invalid:
   link: serg/repo
   clone_url: http://github.git
   repo_name: repo_js_invalid
-  language: JavaScript
+  language: javascript
+  repo_created_at: <%= Time.zone.now - 10.days %>
+  repo_updated_at: <%= Time.zone.now - 5.days %>
+  user: one
+
+repo_rb_valid:
+  link: ivan/ipgeobase
+  clone_url: http://github.git
+  repo_name: repo_rb_valid
+  language: ruby
+  repo_created_at: <%= Time.zone.now - 10.days %>
+  repo_updated_at: <%= Time.zone.now - 5.days %>
+  user: one
+
+repo_rb_invalid:
+  link: serg/ruby
+  clone_url: http://github.git
+  repo_name: repo_rb_invalid
+  language: ruby
   repo_created_at: <%= Time.zone.now - 10.days %>
   repo_updated_at: <%= Time.zone.now - 5.days %>
   user: one

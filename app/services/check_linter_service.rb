@@ -1,14 +1,16 @@
 # frozen_string_literal: true
 
 class CheckLinterService
+  extend Deserializer
+
   class << self
     def call(repo, check)
       clone_url = repo.clone_url
       repo_name = repo.repo_name
       ApplicationContainer[:git_clone].git_clone(clone_url, repo_name)
-      result = ApplicationContainer[repo.language.downcase.to_sym].check(repo_name)
+      result_linter_check = ApplicationContainer[repo.language.downcase.to_sym].check(repo_name)
 
-      if result.empty?
+      if result_linter_check.empty?
         ActiveRecord::Base.transaction do
           check.update(check_passed: 'true')
           check.finish!
@@ -17,14 +19,15 @@ class CheckLinterService
       end
 
       ActiveRecord::Base.transaction do
-        result.each do |data_check|
-          file_path = data_check['filePath']
-          data_check['messages'].each do |message|
+        # debugger
+        send("#{repo.language.downcase}_deserialize", result_linter_check).each do |data_check|
+          file_path = data_check[:file_path]
+          data_check[:errors].each do |error|
             linter_error = check.linter_error.build(
               file_path: file_path,
-              message: message['message'],
-              rule: message['ruleId'],
-              line_column: "#{message['line']} : #{message['column']}"
+              message: error[:message],
+              rule: error[:rule],
+              line_column: error[:line_column]
             )
 
             linter_error.save!

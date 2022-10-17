@@ -5,7 +5,7 @@ class Repository < ApplicationRecord
 
   validates :link, presence: true, uniqueness: true
 
-  enumerize :language, in: %i[JavaScript]
+  enumerize :language, in: %i[javascript ruby]
 
   belongs_to :user
 

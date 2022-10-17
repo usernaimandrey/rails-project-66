@@ -3,10 +3,11 @@
 class FetchLinksGithub
   class << self
     def fetch(user)
-      client = ApplicationContainer["octokit_#{user.id}"]
+      client = ApplicationContainer["octokit_#{user.id}".to_sym]
+      language = %w[javascript ruby]
       client
         .repos
-        .filter { |e| e[:language] == 'JavaScript' }
+        .filter { |repo| language.include?(repo[:language]&.downcase) }
         .map(&:full_name)
     rescue StandardError
       []
