@@ -3,7 +3,7 @@
 class FetchLinksGithub
   class << self
     def fetch(user)
-      client = ApplicationContainer["octokit_#{user.id}".to_sym]
+      client = ApplicationContainer[:octokit].call(user.token)
       language = %w[javascript ruby]
       client
         .repos

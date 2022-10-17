@@ -19,7 +19,6 @@ class CheckLinterService
       end
 
       ActiveRecord::Base.transaction do
-        # debugger
         send("#{repo.language.downcase}_deserialize", result_linter_check).each do |data_check|
           file_path = data_check[:file_path]
           data_check[:errors].each do |error|

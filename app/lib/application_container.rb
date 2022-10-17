@@ -14,4 +14,6 @@ class ApplicationContainer
     register :javascript, -> { LinterCheckJavascript }
     register :ruby, -> { LinterCheckRuby }
   end
+
+  register :octokit, ->(token) { Octokit::Client.new(access_token: token, auto_paginate: true) }
 end

@@ -44,13 +44,13 @@ class Web::RepositoriesControllerTest < ActionDispatch::IntegrationTest
     attr = {
       link: "#{owner}/#{repo}"
     }
-
     stub_request(:get, "#{api}/#{owner}/#{repo}")
       .to_return(
         headers: { 'Content-Type': 'application/json' },
         status: 200,
         body: github_response
       )
+    stub_request(:post, "#{api}/#{owner}/#{repo}/hooks")
 
     post repositories_path, params: { repository: attr }
     new_repo = Repository.find_by(link: attr[:link])

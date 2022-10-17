@@ -3,8 +3,16 @@
 class CreateRepositoryService
   class << self
     def call(link, user)
-      client = ApplicationContainer["octokit_#{user.id}"]
+      api_path = Rails.application.routes.url_helpers.api_checks_path
+      client = ApplicationContainer[:octokit].call(user.token)
       response = client.repo(link)
+      client.create_hook(
+        link,
+        'web',
+        { url: "#{ENV.fetch('BASE_URL', nil)}#{api_path}", content_type: 'json' },
+        { events: %w[push], active: true }
+      )
+
       attr = {
         link: link,
         clone_url: response[:clone_url],

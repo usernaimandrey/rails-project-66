@@ -14,6 +14,10 @@ Rails.application.routes.draw do
       end
     end
 
+    namespace :api do
+      resources :checks, only: :create
+    end
+
     post 'auth/:provider', to: 'auth#request', as: :auth_request
     get 'auth/:provider/callback', to: 'auth#callback', as: :callback_auth
   end
