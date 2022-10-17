@@ -11,3 +11,5 @@
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop)
 
 [Demo on Heroku](https://github-repository-quality-sh.herokuapp.com/)
+
+Приложение для проверки качества кода репозитория
