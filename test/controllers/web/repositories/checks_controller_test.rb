@@ -23,53 +23,12 @@ class Web::Repositories::ChecksControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_path default_url_options
   end
 
-  test 'create check with valit js repo' do
+  test '#create' do
     assert_difference '@repo_valid.checks.count' do
       post repository_checks_path(@repo_valid)
     end
 
-    check = @repo_valid.checks.last
-
     assert_redirected_to @repo_valid
-    assert { check.errors_count.nil? }
-    assert { check.finishing? }
-  end
-
-  test 'create check with invalid js repo' do
-    repo_invalid = repositories(:repo_js_invalid)
-    checks_count = repo_invalid.checks.count
-
-    post repository_checks_path(repo_invalid)
-
-    check = repo_invalid.checks.last
-    repo_invalid.reload
-    assert_not(checks_count == repo_invalid.checks.count)
-    assert_redirected_to repo_invalid
-    assert_not(check.errors_count.nil?)
-    assert { check.finishing? }
-  end
-
-  test 'create check with valid ruby repo' do
-    repo = repositories(:repo_rb_valid)
-    assert_difference 'repo.checks.count' do
-      post repository_checks_path(repo)
-    end
-    check = repo.checks.last
-
-    assert_redirected_to repo
-    assert { check.errors_count.nil? }
-    assert { check.finishing? }
-  end
-
-  test 'create check with invalid ruby repo' do
-    repo = repositories(:repo_rb_invalid)
-    assert_difference 'repo.checks.count' do
-      post repository_checks_path(repo)
-    end
-    check = repo.checks.last
-
-    assert_redirected_to repo
-    assert_not(check.errors_count.nil?)
-    assert { check.finishing? }
+    assert_enqueued_with job: CheckLinterJob
   end
 end

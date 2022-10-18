@@ -7,3 +7,13 @@ two:
   state: checking
   check_passed: "false"
   repository: repo_js_invalid
+
+three:
+  state: checking
+  check_passed: "false"
+  repository: repo_rb_valid
+
+four:
+  state: checking
+  check_passed: "false"
+  repository: repo_rb_invalid

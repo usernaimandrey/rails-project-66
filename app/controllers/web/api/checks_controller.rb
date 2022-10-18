@@ -9,7 +9,7 @@ module Web
       repo = Repository.find_by(link: repo_name)
       check = repo.checks.build
       check.save!
-      CheckLinterService.call(repo, check)
+      CheckLinterJob.perform_later(repo.id, check.id)
     end
   end
 end
