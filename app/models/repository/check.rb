@@ -6,7 +6,7 @@ class Repository::Check < ApplicationRecord
 
   validates :check_passed, presence: true
 
-  enumerize :check_passed, in: %w[no_check true false], default: 'no_check'
+  enumerize :check_passed, in: %w[true false], default: 'false'
 
   belongs_to :repository
 
