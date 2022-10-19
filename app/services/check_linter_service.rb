@@ -35,6 +35,7 @@ class CheckLinterService
           end
         end
         check.finish!
+        check.update(check_passed: 'false')
       end
     rescue StandardError
       check.fail!

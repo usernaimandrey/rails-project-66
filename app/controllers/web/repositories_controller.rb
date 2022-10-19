@@ -22,9 +22,9 @@ module Web
 
     def create
       link = permitted_params[:link]
-      @repository = CreateRepositoryService.call(link, current_user)
-
+      @repository = current_user&.repositories&.build(link: link)
       if @repository.save
+        CreateRepositoryJob.perform_later(@repository.id, current_user.id)
         redirect_to repositories_path, notice: t('.success')
       else
         flash.now[:alert] = t('.failure')

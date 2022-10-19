@@ -2,19 +2,21 @@
 
 class CreateRepositoryService
   class << self
-    def call(link, user)
+    def call(repo_id, user_id)
+      user = User.find_by(id: user_id)
+      repo = user.repositories.find_by(id: repo_id)
       api_path = Rails.application.routes.url_helpers.api_checks_path
       client = ApplicationContainer[:octokit].call(user.token)
-      response = client.repo(link)
+      response = client.repo(repo.link)
       client.create_hook(
-        link,
+        repo.link,
         'web',
         { url: "#{ENV.fetch('BASE_URL', nil)}#{api_path}", content_type: 'json' },
         { events: %w[push], active: true }
       )
 
       attr = {
-        link: link,
+        link: repo.link,
         clone_url: response[:clone_url],
         repo_name: response[:name],
         language: response[:language]&.downcase,
@@ -22,7 +24,7 @@ class CreateRepositoryService
         repo_updated_at: response[:updated_at]
       }
 
-      user.repositories.build(attr)
+      repo.update(attr)
     rescue StandardError
       Repository.new
     end

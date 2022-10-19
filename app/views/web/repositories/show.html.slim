@@ -40,7 +40,7 @@ hr
           th{ scope = 'row' } = link_to i + 1, repository_check_path(@repository, check), class: 'text-decoration-none'
           td = check.aasm.human_state
           td -
-          td = check.check_passed
+          td = check.check_passed_text
           td = l check.created_at, format: :short
 - else
   = t('.no_checks')

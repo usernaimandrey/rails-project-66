@@ -6,7 +6,7 @@ p = l(@check.created_at, format: :long)
 
 p = t('.status', state: @check.aasm.human_state)
 
-p = t('.check_passed', check_passed: @check.check_passed)
+p = t('.check_passed', check_passed: @check.check_passed_text)
 
 p = t('.issues', count: @check.errors_count)
 

@@ -37,26 +37,38 @@ class Web::RepositoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test '#create' do
-    github_response = load_fixture('files/response.json')
-    owner = 'users'
-    repo = 'octocat'
-    api = 'https://api.github.com/repos'
     attr = {
-      link: "#{owner}/#{repo}"
+      link: 'users/octocat'
     }
-    stub_request(:get, "#{api}/#{owner}/#{repo}")
-      .to_return(
-        headers: { 'Content-Type': 'application/json' },
-        status: 200,
-        body: github_response
-      )
-    stub_request(:post, "#{api}/#{owner}/#{repo}/hooks")
 
     post repositories_path, params: { repository: attr }
-    new_repo = Repository.find_by(link: attr[:link])
+    new_repo = Repository.find_by(attr)
 
     assert { new_repo }
-    assert { new_repo.repo_name == JSON.parse(github_response)['name'] }
     assert_redirected_to repositories_path default_url_options
+    assert_enqueued_with job: CreateRepositoryJob
   end
+  # test '#create' do
+  #   github_response = load_fixture('files/response.json')
+  #   owner = 'users'
+  #   repo = 'octocat'
+  #   api = 'https://api.github.com/repos'
+  #   attr = {
+  #     link: "#{owner}/#{repo}"
+  #   }
+  #   stub_request(:get, "#{api}/#{owner}/#{repo}")
+  #     .to_return(
+  #       headers: { 'Content-Type': 'application/json' },
+  #       status: 200,
+  #       body: github_response
+  #     )
+  #   stub_request(:post, "#{api}/#{owner}/#{repo}/hooks")
+
+  #   post repositories_path, params: { repository: attr }
+  #   new_repo = Repository.find_by(link: attr[:link])
+
+  #   assert { new_repo }
+  #   assert { new_repo.repo_name == JSON.parse(github_response)['name'] }
+  #   assert_redirected_to repositories_path default_url_options
+  # end
 end
