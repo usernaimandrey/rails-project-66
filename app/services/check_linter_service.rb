@@ -37,6 +37,7 @@ class CheckLinterService
         check.finish!
         check.update(check_passed: 'false')
       end
+      repo.user.send_mail(check)
     rescue StandardError
       check.fail!
     end

@@ -8,6 +8,11 @@ en:
   repositories: My repositories
   signup: Sign in
   sign_out: Log Out
+  check_linter_status_mailer:
+    send_mail:
+      greating: Hello %{user}
+      subject: Result check
+      text: Check <a href="%{check_path}" class="text-secondary fw-bolder">%{repo}</a> finished with errors
 
   date:
     formats:

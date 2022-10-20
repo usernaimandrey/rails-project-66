@@ -8,7 +8,11 @@ ru:
   repositories: Мои репозитории
   signup: Войти
   sign_out: Выход
-
+  check_linter_status_mailer:
+    send_mail:
+      greating: Здравствуте %{user}
+      subject: Резултат проверки
+      text: Проверка <a href="%{check_path}" class="text-secondary fw-bolder">%{repo}</a> завершилась с ошибками
   date:
     formats:
       default: "%d-%m-%Y"
