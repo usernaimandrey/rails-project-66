@@ -1,19 +1,21 @@
-one:
+DEFAULTS: &DEFAULTS
   state: checking
   check_passed: "false"
+  last_commit_sha:  <%= SecureRandom.urlsafe_base64 %>
+  last_commit_url: 'https://github.com/commits/1254853'
+
+one:
+  <<: *DEFAULTS
   repository: repo_js_valid
 
 two:
-  state: checking
-  check_passed: "false"
+  <<: *DEFAULTS
   repository: repo_js_invalid
 
 three:
-  state: checking
-  check_passed: "false"
+  <<: *DEFAULTS
   repository: repo_rb_valid
 
 four:
-  state: checking
-  check_passed: "false"
+  <<: *DEFAULTS
   repository: repo_rb_invalid

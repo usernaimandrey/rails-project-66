@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_09_221512) do
+ActiveRecord::Schema.define(version: 2022_10_20_210832) do
 
   create_table "repositories", force: :cascade do |t|
     t.string "link"
@@ -38,12 +38,14 @@ ActiveRecord::Schema.define(version: 2022_10_09_221512) do
   end
 
   create_table "repository_checks", force: :cascade do |t|
-    t.boolean "check_passed"
+    t.string "check_passed"
     t.string "state"
     t.integer "repository_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "errors_count"
+    t.string "last_commit_sha"
+    t.string "last_commit_url"
     t.index ["repository_id"], name: "index_repository_checks_on_repository_id"
   end
 
