@@ -5,7 +5,7 @@ class Api::ChecksController < Api::ApplicationController
 
   def create
     repo_name = params['repository']['full_name']
-    repo = Repository.find_by(link: repo_name)
+    repo = Repository.find_by(full_name: repo_name)
     check = repo.checks.build
     check.save!
     CheckLinterJob.perform_later(repo.id, check.id)

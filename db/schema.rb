@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_20_210832) do
+ActiveRecord::Schema.define(version: 2022_10_20_232849) do
 
   create_table "repositories", force: :cascade do |t|
-    t.string "link"
-    t.string "repo_name"
+    t.string "full_name"
+    t.string "name"
     t.string "language"
     t.datetime "repo_created_at"
     t.datetime "repo_updated_at"
@@ -22,7 +22,8 @@ ActiveRecord::Schema.define(version: 2022_10_20_210832) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "clone_url"
-    t.index ["link"], name: "index_repositories_on_link", unique: true
+    t.integer "github_id"
+    t.index ["full_name"], name: "index_repositories_on_full_name", unique: true
     t.index ["user_id"], name: "index_repositories_on_user_id"
   end
 
@@ -38,8 +39,8 @@ ActiveRecord::Schema.define(version: 2022_10_20_210832) do
   end
 
   create_table "repository_checks", force: :cascade do |t|
-    t.string "check_passed"
-    t.string "state"
+    t.string "passed"
+    t.string "aasm_state"
     t.integer "repository_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

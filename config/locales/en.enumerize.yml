@@ -1,0 +1,6 @@
+en:
+  enumerize:
+    passed:
+      true: Success
+      false: Fail
+      no_check: No check

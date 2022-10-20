@@ -38,7 +38,7 @@ class Web::RepositoriesControllerTest < ActionDispatch::IntegrationTest
 
   test '#create' do
     attr = {
-      link: 'users/octocat'
+      full_name: 'users/octocat'
     }
 
     post repositories_path, params: { repository: attr }

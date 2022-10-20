@@ -11,7 +11,7 @@ class CheckLinterJobTest < ActiveJob::TestCase
 
     check.reload
     assert { check.finishing? }
-    assert { check.check_passed == true }
+    assert { check.passed == true }
     assert_not(check.errors_count)
   end
 
@@ -23,7 +23,7 @@ class CheckLinterJobTest < ActiveJob::TestCase
 
     check.reload
     assert { check.finishing? }
-    assert { check.check_passed == false }
+    assert { check.passed == false }
     assert { check.errors_count }
   end
 
@@ -36,7 +36,7 @@ class CheckLinterJobTest < ActiveJob::TestCase
 
     check.reload
     assert { check.finishing? }
-    assert { check.check_passed == true }
+    assert { check.passed == true }
     assert_not(check.errors_count)
   end
 
@@ -49,7 +49,7 @@ class CheckLinterJobTest < ActiveJob::TestCase
 
     check.reload
     assert { check.finishing? }
-    assert { check.check_passed == false }
+    assert { check.passed == false }
     assert { check.errors_count }
   end
 end

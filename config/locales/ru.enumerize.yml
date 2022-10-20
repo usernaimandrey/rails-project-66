@@ -1,6 +1,6 @@
 ru:
   enumerize:
-    check_passed:
+    passed:
       true: Успешно
       false: Провал
       no_check: Нет проверок

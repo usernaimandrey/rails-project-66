@@ -21,8 +21,8 @@ module Web
     end
 
     def create
-      link = permitted_params[:link]
-      @repository = current_user&.repositories&.build(link: link)
+      full_name = permitted_params[:full_name]
+      @repository = current_user&.repositories&.build(full_name: full_name)
       if @repository.save
         CreateRepositoryJob.perform_later(@repository.id, current_user.id)
         redirect_to repositories_path, notice: t('.success')
@@ -35,7 +35,7 @@ module Web
     private
 
     def permitted_params
-      params.require(:repository).permit(:link)
+      params.require(:repository).permit(:full_name)
     end
   end
 end

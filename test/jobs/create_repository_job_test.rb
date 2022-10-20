@@ -10,7 +10,7 @@ class CreateRepositoryJobTest < ActiveJob::TestCase
     repo_name = 'octocat'
     api = 'https://api.github.com/repos'
     attr = {
-      link: "#{owner}/#{repo_name}"
+      full_name: "#{owner}/#{repo_name}"
     }
     repo = user.repositories.build(attr)
     repo.save
@@ -22,9 +22,9 @@ class CreateRepositoryJobTest < ActiveJob::TestCase
       )
     stub_request(:post, "#{api}/#{owner}/#{repo_name}/hooks")
 
-    assert_not(repo.repo_name)
+    assert_not(repo.name)
     CreateRepositoryJob.perform_now(repo.id, user.id)
     repo.reload
-    assert { repo.repo_name == JSON.parse(github_response)['name'] }
+    assert { repo.name == JSON.parse(github_response)['name'] }
   end
 end

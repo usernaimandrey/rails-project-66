@@ -8,14 +8,14 @@ class CheckLinterService
       repo = Repository.find_by(id: repo_id)
       check = Repository::Check.find_by(id: check_id)
       clone_url = repo.clone_url
-      repo_name = repo.repo_name
+      repo_name = repo.name
       ApplicationContainer[:git_clone].git_clone(clone_url, repo_name)
       result_linter_check = ApplicationContainer[repo.language.downcase.to_sym].check(repo_name)
-      last_commit_data = ApplicationContainer[:fetch_last_commit].fetch(repo.user.token, repo.link)
+      last_commit_data = ApplicationContainer[:fetch_last_commit].fetch(repo.user.token, repo.full_name)
 
       if result_linter_check.empty?
         ActiveRecord::Base.transaction do
-          check.update({ check_passed: 'true' }.merge(last_commit_data))
+          check.update({ passed: 'true' }.merge(last_commit_data))
           check.finish!
         end
         return
@@ -36,7 +36,7 @@ class CheckLinterService
           end
         end
         check.finish!
-        check.update({ check_passed: 'false' }.merge(last_commit_data))
+        check.update({ passed: 'false' }.merge(last_commit_data))
       end
       repo.user.send_mail(check)
     rescue StandardError

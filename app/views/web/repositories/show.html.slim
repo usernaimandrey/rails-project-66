@@ -1,13 +1,13 @@
 - provide :page_title, t('.title')
 
-h2 = @repository.link
+h2 = @repository.full_name
 
 .d-flex
   = link_to t('.check'), repository_checks_path(@repository), method: :post, class: 'btn btn-primary'
 
 p
   strong.me-2 = t('.repo_name')
-  = @repository.repo_name
+  = @repository.name
 p
   strong.me-2 = t('.language')
   = @repository.language
@@ -43,7 +43,7 @@ hr
             td = link_to check.last_commit_sha, check.last_commit_url
           - else
             td -
-          td = check.check_passed_text
+          td = check.passed_text
           td = l check.created_at, format: :short
 - else
   = t('.no_checks')

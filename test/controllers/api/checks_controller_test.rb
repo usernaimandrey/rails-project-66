@@ -6,7 +6,7 @@ class Api::ChecksControllerTest < ActionDispatch::IntegrationTest
   test '#create' do
     repo = repositories(:repo_js_valid)
     attributes = {
-      full_name: repo.link
+      full_name: repo.full_name
     }
 
     assert_difference 'repo.checks.count' do

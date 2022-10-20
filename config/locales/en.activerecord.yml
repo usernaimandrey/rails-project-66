@@ -3,7 +3,7 @@ en:
   activerecord:
     attributes:
       repository:
-        link: Link
+        full_name: Full Name Repo
       repository/check:
         state: State
         state/checking: Checking
