@@ -11,7 +11,7 @@ en:
         repositories: 'List of the repo:'
         need_auth: You need to login!
         title: My repositories
-        no_checks: No checks
+        no_check: No checks
       checks:
         create:
           success: Check was created!

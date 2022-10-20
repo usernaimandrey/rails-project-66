@@ -11,7 +11,7 @@ ru:
         need_auth: Вам нужно авторизоваться!
         repositories: "Список репозиториев:"
         title: Мои репозитории
-        no_checks: Нет проверок
+        no_check: Нет проверок
       checks:
         create:
           success: Проверка созданна!
