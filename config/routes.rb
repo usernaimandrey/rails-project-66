@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  namespace :api do
+    resources :checks, only: :create
+  end
+
   scope module: :web do
     root 'home#index'
 
@@ -12,10 +16,6 @@ Rails.application.routes.draw do
       scope module: :repositories do
         resources :checks, only: %i[show create]
       end
-    end
-
-    namespace :api do
-      resources :checks, only: :create
     end
 
     post 'auth/:provider', to: 'auth#request', as: :auth_request

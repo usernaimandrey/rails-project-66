@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class Web::Api::ChecksControllerTest < ActionDispatch::IntegrationTest
+class Api::ChecksControllerTest < ActionDispatch::IntegrationTest
   test '#create' do
     repo = repositories(:repo_js_valid)
     attributes = {
