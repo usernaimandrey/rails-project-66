@@ -13,6 +13,7 @@ Rails.application.configure do
   config.cache_classes = false
   config.action_view.cache_template_loading = true
   config.default_url_options = { host: 'localhost:3000', protocol: 'http://', locale: nil }
+  routes.default_url_options[:host] = 'localhost:3000'
 
   # Do not eager load code on boot. This avoids loading your whole application
   # just for the purpose of running a single test. If you are using a tool that
