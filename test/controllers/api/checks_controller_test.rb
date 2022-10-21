@@ -13,6 +13,7 @@ class Api::ChecksControllerTest < ActionDispatch::IntegrationTest
       post api_checks_path params: { repository: attributes }
     end
 
+    assert_response 200
     assert_enqueued_with job: CheckLinterJob
   end
 end

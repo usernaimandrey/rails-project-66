@@ -7,9 +7,9 @@ ru:
         name: Название репозитория
       repository/check:
         aasm_state: Состояние
-        aasm_state/checking: Проверяется
-        aasm_state/finishing: Закончено
-        aasm_state/faling: Ошибка
+        aasm_state/checked: Проверяется
+        aasm_state/finished: Закончено
+        aasm_state/faled: Ошибка
 
     errors:
       models:

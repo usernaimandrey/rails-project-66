@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  include RepositoryConcern
-
   before_save { self.email = email.downcase }
 
   validates :email, :nickname, :token, presence: true

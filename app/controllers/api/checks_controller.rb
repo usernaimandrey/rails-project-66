@@ -9,5 +9,7 @@ class Api::ChecksController < Api::ApplicationController
     check = repo.checks.build
     check.save!
     CheckLinterJob.perform_later(repo.id, check.id)
+
+    render json: { status: 200 }
   end
 end

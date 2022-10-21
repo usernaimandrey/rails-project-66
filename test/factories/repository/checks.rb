@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :repository_check, class: 'Repository::Check' do
-    check_passed { 'false' }
+    passed { 'false' }
   end
 end

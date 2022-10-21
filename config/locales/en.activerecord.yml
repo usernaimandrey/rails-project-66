@@ -6,9 +6,9 @@ en:
         full_name: Full Name Repo
       repository/check:
         state: State
-        state/checking: Checking
-        state/finishing: Finished
-        state/faling: Faled
+        state/checked: Checked
+        state/finished: Finished
+        state/faled: Faled
 
     errors:
       models:

@@ -10,7 +10,7 @@ class CheckLinterJobTest < ActiveJob::TestCase
     CheckLinterJob.perform_now(repo_valid.id, check.id)
 
     check.reload
-    assert { check.finishing? }
+    assert { check.finished? }
     assert { check.passed == true }
     assert_not(check.errors_count)
   end
@@ -22,7 +22,7 @@ class CheckLinterJobTest < ActiveJob::TestCase
     CheckLinterJob.perform_now(repo_invalid.id, check.id)
 
     check.reload
-    assert { check.finishing? }
+    assert { check.finished? }
     assert { check.passed == false }
     assert { check.errors_count }
   end
@@ -35,7 +35,7 @@ class CheckLinterJobTest < ActiveJob::TestCase
     CheckLinterJob.perform_now(repo_valid.id, check.id)
 
     check.reload
-    assert { check.finishing? }
+    assert { check.finished? }
     assert { check.passed == true }
     assert_not(check.errors_count)
   end
@@ -48,7 +48,7 @@ class CheckLinterJobTest < ActiveJob::TestCase
     CheckLinterJob.perform_now(repo_invalid.id, check.id)
 
     check.reload
-    assert { check.finishing? }
+    assert { check.finished? }
     assert { check.passed == false }
     assert { check.errors_count }
   end

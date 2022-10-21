@@ -1,5 +1,5 @@
 DEFAULTS: &DEFAULTS
-  aasm_state: checking
+  aasm_state: checked
   passed: "false"
   last_commit_sha:  <%= SecureRandom.urlsafe_base64 %>
   last_commit_url: 'https://github.com/commits/1254853'

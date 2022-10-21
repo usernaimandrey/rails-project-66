@@ -13,16 +13,16 @@ class Repository::Check < ApplicationRecord
   has_many :linter_error, dependent: :destroy
 
   aasm do
-    state :checking, initial: true
-    state :finishing
-    state :faling
+    state :checked, initial: true
+    state :finished
+    state :faled
 
     event :finish do
-      transitions from: :checking, to: :finishing
+      transitions from: :checked, to: :finished
     end
 
     event :fail do
-      transitions from: :checking, to: :faling
+      transitions from: :checked, to: :faled
     end
   end
 end
