@@ -5,15 +5,7 @@ class CreateRepositoryService
     def call(repo_id, user_id)
       user = User.find_by(id: user_id)
       repo = user.repositories.find_by(id: repo_id)
-      api_path = Rails.application.routes.url_helpers.api_checks_path
-      client = ApplicationContainer[:octokit].call(user.token)
-      response = client.repo(repo.github_id)
-      client.create_hook(
-        repo.github_id,
-        'web',
-        { url: "#{ENV.fetch('BASE_URL', nil)}#{api_path}", content_type: 'json' },
-        { events: %w[push], active: true }
-      )
+      response = ApplicationContainer[:github_api].call(user, repo)
 
       attr = {
         github_id: repo.github_id,

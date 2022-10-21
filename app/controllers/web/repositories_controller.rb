@@ -23,7 +23,6 @@ module Web
     def create
       github_id = permitted_params[:github_id]
       @repository = current_user&.repositories&.build(github_id: github_id)
-
       if @repository.save
         CreateRepositoryJob.perform_later(@repository.id, current_user.id)
         redirect_to repositories_path, notice: t('.success')
