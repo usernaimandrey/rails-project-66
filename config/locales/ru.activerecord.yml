@@ -4,7 +4,7 @@ ru:
     attributes:
       repository:
         full_name: Полное имя репозитория
-        github_id:  Полное имя репозитория
+        github_id:  Репозиторй
         name: Название репозитория
       repository/check:
         aasm_state: Состояние

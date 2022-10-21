@@ -11,7 +11,7 @@ module Web
 
     def show
       @repository = current_user.repositories.find_by(id: params[:id])
-      @checks = @repository.checks.order(created_at: :desc)
+      @checks = @repository&.checks&.order(created_at: :desc)
       authorize @repository
     end
 
@@ -27,8 +27,8 @@ module Web
         CreateRepositoryJob.perform_later(@repository.id, current_user.id)
         redirect_to repositories_path, notice: t('.success')
       else
-        flash.now[:alert] = t('.failure')
-        render :new, status: :unprocessable_entity
+        flash[:alert] = @repository&.errors&.full_messages&.join
+        redirect_to new_repository_path(@repository)
       end
     end
 

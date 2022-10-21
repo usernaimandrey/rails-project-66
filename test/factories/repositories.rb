@@ -3,6 +3,7 @@
 FactoryBot.define do
   factory :repository do
     full_name { 'github/github' }
+    github_id { Faker::Number.number(digits: 10) }
     name { 'repo_js_valid' }
     language { 'javascript' }
     clone_url { 'http://github.git' }

@@ -30,7 +30,7 @@ ru:
         language: 'Язык:'
         no_checks: Нет проверок
         repo_name: 'Название репозитория:'
-        repo_created_at: 'Дата создантя:'
+        repo_created_at: 'Дата создания:'
         repo_updated_at: 'Дата обновления:'
         reference: Последний коммит
         state: Состояние
