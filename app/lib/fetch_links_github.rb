@@ -8,7 +8,7 @@ class FetchLinksGithub
       client
         .repos
         .filter { |repo| language.include?(repo[:language]&.downcase) }
-        .map { |repo| [repo[:full_name], repo[:id]] }
+        .map(&:full_name)
     rescue StandardError
       []
     end
