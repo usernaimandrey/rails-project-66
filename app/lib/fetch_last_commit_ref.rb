@@ -5,7 +5,7 @@ class FetchLastCommitRef
     def fetch(token, repo_link)
       client = ApplicationContainer[:octokit].call(token)
       response = client.commits(repo_link).first
-      { last_commit_sha: response[:sha][..6], last_commit_url: response[:html_url] }
+      { last_commit_sha: response[:sha][0..6], last_commit_url: response[:html_url] }
     end
   end
 end

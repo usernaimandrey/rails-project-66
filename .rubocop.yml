@@ -6,7 +6,6 @@ require:
 
 AllCops:
   NewCops: enable
-  TargetRubyVersion: 3.0.2
   Exclude:
     - 'bin/**'
     - 'db/schema.rb'
@@ -14,6 +13,10 @@ AllCops:
     - 'vendor/**/*'
     - 'node_modules/**/*'
     - 'tmp/**/*'
+  SuggestExtensions: false
+
+Rails:
+  Enabled: true
 
 Style/ClassAndModuleChildren:
   Enabled: false
@@ -39,5 +42,5 @@ Metrics/BlockLength:
 Style/AsciiComments:
   Enabled: false
 
-Rails/FilePath:
-  EnforcedStyle: slashes
+Metrics/ParameterLists:
+  Enabled: false
