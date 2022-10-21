@@ -4,6 +4,7 @@ en:
     attributes:
       repository:
         full_name: Full Name Repo
+        gihub_id: Full Name Repo
       repository/check:
         state: State
         state/checked: Checked

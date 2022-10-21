@@ -21,8 +21,9 @@ module Web
     end
 
     def create
-      full_name = permitted_params[:full_name]
-      @repository = current_user&.repositories&.build(full_name: full_name)
+      github_id = permitted_params[:github_id]
+      @repository = current_user&.repositories&.build(github_id: github_id)
+
       if @repository.save
         CreateRepositoryJob.perform_later(@repository.id, current_user.id)
         redirect_to repositories_path, notice: t('.success')
@@ -35,7 +36,7 @@ module Web
     private
 
     def permitted_params
-      params.require(:repository).permit(:full_name)
+      params.require(:repository).permit(:github_id)
     end
   end
 end

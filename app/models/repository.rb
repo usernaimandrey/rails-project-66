@@ -3,7 +3,7 @@
 class Repository < ApplicationRecord
   extend Enumerize
 
-  validates :full_name, presence: true, uniqueness: true
+  # validates :full_name, presence: true, uniqueness: true
 
   enumerize :language, in: %i[javascript ruby]
 

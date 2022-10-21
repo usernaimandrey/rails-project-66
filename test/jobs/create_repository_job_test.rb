@@ -6,21 +6,20 @@ class CreateRepositoryJobTest < ActiveJob::TestCase
   test 'create repository' do
     github_response = load_fixture('files/response.json')
     user = users(:one)
-    owner = 'users'
-    repo_name = 'octocat'
-    api = 'https://api.github.com/repos'
+    repo_id = 1_296_269
+    api = 'https://api.github.com/repositories'
     attr = {
-      full_name: "#{owner}/#{repo_name}"
+      github_id: repo_id
     }
     repo = user.repositories.build(attr)
     repo.save
-    stub_request(:get, "#{api}/#{owner}/#{repo_name}")
+    stub_request(:get, "#{api}/#{repo_id}")
       .to_return(
         headers: { 'Content-Type': 'application/json' },
         status: 200,
         body: github_response
       )
-    stub_request(:post, "#{api}/#{owner}/#{repo_name}/hooks")
+    stub_request(:post, "#{api}/#{repo_id}/hooks")
 
     assert_not(repo.name)
     CreateRepositoryJob.perform_now(repo.id, user.id)
