@@ -15,10 +15,8 @@ module ApplicationHelper
     image_tag(url, size: '50x50', alt: current_user&.email, class: 'rounded-circle')
   end
 
-  def normalize_file_path(repo, path)
-    name = repo.name
+  def normalize_file_path(repo)
     full_name = repo.full_name
-    new_path = path.split(name)[1]
-    "https://github.com/#{full_name}/tree/main/#{new_path}"
+    "https://github.com/#{full_name}"
   end
 end
