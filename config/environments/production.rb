@@ -72,9 +72,10 @@ Rails.application.configure do
     user_name: ENV.fetch('MAIL_USERNAME', nil),
     password: ENV.fetch('MAIL_PASSWORD', nil),
     address: ENV.fetch('MAIL_HOST', nil),
-    domain: ENV.fetch('MAIL_HOST', nil),
+    domain: ENV.fetch('MAIL_HOST_Y', nil),
     port: ENV.fetch('SMTP_PORT', '25'),
-    authentication: :cram_md5
+    authentication: 'plain',
+    tls: true
   }
 
   # Ignore bad email addresses and do not raise email delivery errors.
