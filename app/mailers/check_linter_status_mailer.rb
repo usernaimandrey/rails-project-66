@@ -5,6 +5,6 @@ class CheckLinterStatusMailer < ApplicationMailer
     @check = params[:check]
     @user = params[:user]
 
-    mail(to: @user.email, subject: t('.subject'))
+    mail(from: ENV.fetch('MAIL_USERNAME', 'example@mail.com'), to: @user.email, subject: t('.subject'))
   end
 end
