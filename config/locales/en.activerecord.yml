@@ -6,10 +6,10 @@ en:
         full_name: Full Name Repo
         gihub_id: Repository
       repository/check:
-        state: State
-        state/checked: Checked
-        state/finished: Finished
-        state/faled: Faled
+        aasm_state: State
+        aasm_state/checked: Checked
+        aasm_state/finished: Finished
+        aasm_state/faled: Faled
 
     errors:
       models:
