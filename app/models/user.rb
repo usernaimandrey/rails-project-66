@@ -13,8 +13,12 @@ class User < ApplicationRecord
 
   def links
     client = ApplicationContainer[:fetch_links]
-    Rails.cache.fetch("links_cache-#{id}", expires_in: 1.hour) do
+    Rails.cache.fetch(cache_key, expires_in: 1.hour) do
       client.fetch(self)
     end
+  end
+
+  def cache_key
+    "links_cache-#{id}"
   end
 end

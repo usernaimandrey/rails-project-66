@@ -28,13 +28,13 @@ module Web
         LoadRepositoryJob.perform_later(@repository.id, current_user.id)
         redirect_to repositories_path, notice: t('.success')
       else
-        flash[:alert] = @repository&.errors&.full_messages&.join
+        flash[:alert] = @repository.errors.full_messages.join
         redirect_to new_repository_path(@repository)
       end
     end
 
     def clear_cache
-      Rails.cache.delete("links_cache-#{current_user.id}")
+      Rails.cache.delete("#{current_user.cache_key}-#{current_user.id}")
       flash[:notice] = t('.success')
       redirect_to new_repository_path
     end

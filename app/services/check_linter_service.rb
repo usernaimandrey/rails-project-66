@@ -25,14 +25,14 @@ class CheckLinterService
         send("#{repo.language.downcase}_deserialize", result_linter_check).each do |data_check|
           file_path = data_check[:file_path]
           data_check[:errors].each do |error|
-            linter_error = check.linter_error.build(
+            linter_errors = check.linter_errors.build(
               file_path: file_path,
               message: error[:message],
               rule: error[:rule],
               line_column: error[:line_column]
             )
 
-            linter_error.save!
+            linter_errors.save!
           end
         end
         check.finish!
