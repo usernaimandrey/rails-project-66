@@ -5,7 +5,7 @@ module Web
     before_action :authenticate_user!
 
     def resource_repo
-      @resource_repo ||= current_user.repositories.find_by(id: params[:repository_id])
+      @resource_repo ||= current_user.repositories.find(params[:repository_id])
     end
   end
 end

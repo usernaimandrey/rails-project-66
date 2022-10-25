@@ -10,9 +10,9 @@ module Web
     end
 
     def show
-      @repository = current_user.repositories.find(params[:id])
+      @repository = Repository.find(params[:id])
 
-      @checks = @repository&.checks&.order(created_at: :desc)
+      @checks = @repository.checks.order(created_at: :desc)
       authorize @repository
     end
 
@@ -23,7 +23,7 @@ module Web
 
     def create
       github_id = permitted_params[:github_id]
-      @repository = current_user&.repositories&.build(github_id: github_id)
+      @repository = current_user.repositories.build(github_id: github_id)
       if @repository.save
         CreateRepositoryJob.perform_later(@repository.id, current_user.id)
         redirect_to repositories_path, notice: t('.success')
