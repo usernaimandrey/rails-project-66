@@ -10,7 +10,7 @@ module Web
     end
 
     def show
-      @repository = Repository.find(params[:id])
+      @repository = current_user.repositories.find(params[:id])
 
       @checks = @repository.checks.order(created_at: :desc)
       authorize @repository
@@ -25,12 +25,18 @@ module Web
       github_id = permitted_params[:github_id]
       @repository = current_user.repositories.build(github_id: github_id)
       if @repository.save
-        CreateRepositoryJob.perform_later(@repository.id, current_user.id)
+        LoadRepositoryJob.perform_later(@repository.id, current_user.id)
         redirect_to repositories_path, notice: t('.success')
       else
         flash[:alert] = @repository&.errors&.full_messages&.join
         redirect_to new_repository_path(@repository)
       end
+    end
+
+    def clear_cache
+      Rails.cache.delete("links_cache-#{current_user.id}")
+      flash[:notice] = t('.success')
+      redirect_to new_repository_path
     end
 
     private

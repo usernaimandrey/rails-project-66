@@ -16,6 +16,8 @@ en:
         create:
           success: Check was created!
           fail: Error!
+      clear_cache:
+        success: Cache flushed successfully! 
       create:
         failure: Correct the mistakes
         success: Repository create!

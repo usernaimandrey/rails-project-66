@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class CreateRepositoryJobTest < ActiveJob::TestCase
+class LoadRepositoryJobTest < ActiveJob::TestCase
   test 'create repository' do
     github_response = load_fixture('files/response.json')
     user = users(:one)
@@ -13,7 +13,7 @@ class CreateRepositoryJobTest < ActiveJob::TestCase
     repo.save
 
     assert_not(repo.name)
-    CreateRepositoryJob.perform_now(repo.id, user.id)
+    LoadRepositoryJob.perform_now(repo.id, user.id)
     repo.reload
     assert { repo.name == JSON.parse(github_response)['name'] }
   end

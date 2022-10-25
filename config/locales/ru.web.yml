@@ -1,8 +1,5 @@
 ru:
   web:
-    caches:
-      destroy:
-        success: Кеш успешно сброшен!
     auth:
       callback:
         success: Добро пожаловать %{user}, вы успешно авторизованны

@@ -16,6 +16,8 @@ ru:
         create:
           success: Проверка созданна!
           fail: Ошибка!
+      clear_cache:
+        success: Кеш успешно очищен!
       create:
         failure: Исправьте ошибки
         success: Репозиторий успешно созданн!

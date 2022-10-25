@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
     resource :session, only: :destroy
 
-    resource :cache, only: :destroy
+    resource :repository, only: :destroy, to: 'repositories#clear_cache', as: :clear_cache
 
     resources :repositories, only: %i[index show new create] do
       scope module: :repositories do
