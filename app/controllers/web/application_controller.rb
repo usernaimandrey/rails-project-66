@@ -10,6 +10,8 @@ module Web
 
     rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
+    rescue_from ActionController::RoutingError, with: :not_found
+
     def switch_locale(&action)
       locale = params[:locale] || I18n.default_locale
 
