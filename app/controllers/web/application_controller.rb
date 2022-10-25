@@ -2,11 +2,11 @@
 
 module Web
   class ApplicationController < ApplicationController
-    around_action :switch_locale
     include AuthConcern
     include Pundit::Authorization
+    around_action :switch_locale
 
-    rescue_from Pundit::NotAuthorizedError, with: :user_not_author
+    # rescue_from Pundit::NotAuthorizedError, with: :user_not_author
 
     def switch_locale(&action)
       locale = params[:locale] || I18n.default_locale
@@ -18,13 +18,13 @@ module Web
       { locale: I18n.locale }
     end
 
-    private
+    # private
 
-    def user_not_author(exception)
-      policy_name = exception.policy.class.to_s.underscore
-      flash[:alert] = t "#{policy_name}.#{exception.query}", scope: 'pundit', default: :default
+    # def user_not_author(exception)
+    #   policy_name = exception.policy.class.to_s.underscore
+    #   flash[:alert] = t "#{policy_name}.#{exception.query}", scope: 'pundit', default: :default
 
-      redirect_to root_path
-    end
+    #   redirect_to root_path
+    # end
   end
 end

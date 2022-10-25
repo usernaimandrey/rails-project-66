@@ -36,6 +36,14 @@ class Web::RepositoriesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'new with not auth user' do
+    delete session_path
+
+    get new_repository_path
+
+    assert_redirected_to root_path
+  end
+
   test '#create' do
     attr = {
       github_id: 1_296_269
