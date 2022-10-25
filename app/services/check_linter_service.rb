@@ -4,9 +4,9 @@ class CheckLinterService
   extend Deserializer
 
   class << self
-    def call(repo_id, check_id)
-      repo = Repository.find_by(id: repo_id)
+    def call(check_id)
       check = Repository::Check.find_by(id: check_id)
+      repo = check.repository
       clone_url = repo.clone_url
       repo_name = repo.name
       ApplicationContainer[:git_clone].git_clone(clone_url, repo_name)

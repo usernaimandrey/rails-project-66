@@ -3,7 +3,7 @@
 class CheckLinterJob < ApplicationJob
   queue_as :default
 
-  def perform(repo_id, check_id)
-    CheckLinterService.call(repo_id, check_id)
+  def perform(check_id)
+    CheckLinterService.call(check_id)
   end
 end

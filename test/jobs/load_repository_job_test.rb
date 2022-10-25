@@ -13,7 +13,7 @@ class LoadRepositoryJobTest < ActiveJob::TestCase
     repo.save
 
     assert_not(repo.name)
-    LoadRepositoryJob.perform_now(repo.id, user.id)
+    LoadRepositoryJob.perform_now(repo.id)
     repo.reload
     assert { repo.name == JSON.parse(github_response)['name'] }
   end

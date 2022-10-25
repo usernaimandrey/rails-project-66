@@ -2,9 +2,9 @@
 
 class CreateRepositoryService
   class << self
-    def call(repo_id, user_id)
-      user = User.find_by(id: user_id)
-      repo = user.repositories.find_by(id: repo_id)
+    def call(repo_id)
+      repo = Repository.find_by(id: repo_id)
+      user = repo.user
       response = ApplicationContainer[:github_api].call(user, repo)
 
       attr = {

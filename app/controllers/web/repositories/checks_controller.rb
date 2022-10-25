@@ -15,7 +15,7 @@ module Web
 
       if @check.save
         flash[:notice] = t('.success')
-        CheckLinterJob.perform_later(resource_repo.id, @check.id)
+        CheckLinterJob.perform_later(@check.id)
       else
         flash[:alert] = t('.fail')
       end
