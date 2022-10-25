@@ -28,6 +28,7 @@ en:
         check_passed: Result
         created_at: Created at
         no_checks: no checks
+        not_found: Repositories not found
         language: 'Language:'
         repo_name: 'Name:'
         repo_created_at: 'Create:'

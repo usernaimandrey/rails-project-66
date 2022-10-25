@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get '/403', to: 'web/errors#forbidden', as: :not_forbidden_errors
-  get '/404', to: 'web/errors#not_found', as: :not_found_errors
-  match '/500', to: 'web/errors#server_error', via: :all
-
   namespace :api do
     resources :checks, only: :create
   end

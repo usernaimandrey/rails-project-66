@@ -29,6 +29,7 @@ ru:
         created_at: Дата Создания
         language: 'Язык:'
         no_checks: Нет проверок
+        not_found: Такого репозитория не сущевствует
         repo_name: 'Название репозитория:'
         repo_created_at: 'Дата создания:'
         repo_updated_at: 'Дата обновления:'

@@ -7,6 +7,7 @@ module Web
     include Pundit::Authorization
 
     rescue_from Pundit::NotAuthorizedError, with: :user_not_author
+
     rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
     def switch_locale(&action)
@@ -29,7 +30,8 @@ module Web
     end
 
     def not_found
-      redirect_to not_found_errors_path
+      flash[:alert] = t('.not_found')
+      redirect_to root_path
     end
   end
 end
