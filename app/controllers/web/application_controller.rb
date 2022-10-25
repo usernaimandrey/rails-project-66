@@ -8,10 +8,6 @@ module Web
 
     rescue_from Pundit::NotAuthorizedError, with: :user_not_author
 
-    # rescue_from ActiveRecord::RecordNotFound, with: :not_found
-
-    # rescue_from ActionController::RoutingError, with: :not_found
-
     def switch_locale(&action)
       locale = params[:locale] || I18n.default_locale
 
@@ -30,10 +26,5 @@ module Web
 
       redirect_to root_path
     end
-
-    # def not_found
-    #   flash[:alert] = t('.not_found')
-    #   redirect_to not_found_errors_path
-    # end
   end
 end
