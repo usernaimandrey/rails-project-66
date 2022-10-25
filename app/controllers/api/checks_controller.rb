@@ -8,7 +8,7 @@ class Api::ChecksController < Api::ApplicationController
     repo = Repository.find_by(full_name: repo_name)
     check = repo&.checks&.build
     if check.save
-      CheckLinterJob.perform_later(repo.id, check.id)
+      CheckLinterJob.perform_later(check.id)
       render json: { status: 200 }
     else
       render json: { status: 422 }
