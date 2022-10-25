@@ -10,7 +10,8 @@ module Web
     end
 
     def show
-      @repository = current_user.repositories.find_by(id: params[:id])
+      @repository = Repository.find(params[:id])
+
       @checks = @repository&.checks&.order(created_at: :desc)
       authorize @repository
     end

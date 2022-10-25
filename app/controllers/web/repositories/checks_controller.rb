@@ -4,8 +4,8 @@ module Web
   class Repositories::ChecksController < Repositories::ApplicationController
     after_action :verify_authorized, only: %i[show create]
     def show
-      @check = resource_repo.checks.includes(:linter_error).find_by(id: params[:id])
-      @errors = @check&.linter_error
+      @check = resource_repo.checks.includes(:linter_errors).find_by(id: params[:id])
+      @errors = @check&.linter_errors
       authorize @check
     end
 

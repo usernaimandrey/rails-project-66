@@ -10,7 +10,7 @@ class Repository::Check < ApplicationRecord
 
   belongs_to :repository
 
-  has_many :linter_error, dependent: :destroy
+  has_many :linter_errors, dependent: :destroy
 
   aasm do
     state :checking, initial: true
