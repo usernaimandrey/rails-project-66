@@ -14,11 +14,11 @@ h2 = t('.repositories')
         th{ scope = 'col' } = t('.check')
         th
     tbody
-      - @repositories&.each_with_index do |repository, i|
+      - @repositories.each_with_index do |repository, i|
         tr
           th{ scope = 'row' } = i + 1
           td = link_to repository.name || '-', repository, class: 'text-decoration-none'
           td = repository.language
-          td = repository&.checks&.last&.passed_text || t('.no_check')
+          td = repository.checks.last.passed_text || t('.no_check')
 - else
  p.m-2 = t('.first_repo')
