@@ -6,23 +6,23 @@ class Repository::Check < ApplicationRecord
 
   validates :passed, presence: true
 
-  enumerize :passed, in: %w[no_check true false], default: 'no_check'
+  enumerize :passed, in: %w[true false], default: 'false'
 
   belongs_to :repository
 
   has_many :linter_error, dependent: :destroy
 
   aasm do
-    state :checked, initial: true
+    state :checking, initial: true
     state :finished
     state :failed
 
     event :finish do
-      transitions from: :checked, to: :finished
+      transitions from: :checking, to: :finished
     end
 
     event :fail do
-      transitions from: :checked, to: :failed
+      transitions from: :checking, to: :failed
     end
   end
 end

@@ -38,7 +38,7 @@ class CheckLinterService
         check.finish!
         check.update({ passed: 'false' }.merge(last_commit_data))
       end
-      repo.user.send_mail(check)
+      CheckLinterStatusMailer.with(user: repo.user, check: check).send_mail.deliver_later
     rescue StandardError
       check.fail!
     end

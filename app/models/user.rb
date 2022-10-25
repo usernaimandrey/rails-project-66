@@ -17,8 +17,4 @@ class User < ApplicationRecord
       client.fetch(self)
     end
   end
-
-  def send_mail(check)
-    CheckLinterStatusMailer.with(user: self, check: check).send_mail.deliver_later
-  end
 end

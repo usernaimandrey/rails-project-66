@@ -7,7 +7,7 @@ en:
         github_id: Repository
       repository/check:
         aasm_state: State
-        aasm_state/checked: Checked
+        aasm_state/checking: Checking
         aasm_state/finished: Finished
         aasm_state/failed: Failed
 
