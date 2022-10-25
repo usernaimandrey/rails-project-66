@@ -10,8 +10,8 @@ ru:
   sign_out: Выход
   check_linter_status_mailer:
     send_mail:
-      greating: Здравствуте %{user}
-      subject: Резултат проверки
+      greating: Здравствуйте %{user}
+      subject: Результат проверки
       text: Проверка <a href="%{check_path}" class="text-secondary fw-bolder">%{repo}</a> завершилась с ошибками
   date:
     formats:

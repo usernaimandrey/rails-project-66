@@ -10,7 +10,7 @@ ru:
         aasm_state: Состояние
         aasm_state/checked: Проверяется
         aasm_state/finished: Закончено
-        aasm_state/faled: Ошибка
+        aasm_state/failed: Ошибка
 
     errors:
       models:
@@ -18,5 +18,7 @@ ru:
           attributes:
             link: 
               blank: "не может быть пустой"
+            github_id:
+              taken: уже сущевствует
     models:
       repository: Репозиторий
