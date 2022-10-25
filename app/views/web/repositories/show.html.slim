@@ -12,6 +12,9 @@ p
   strong.me-2 = t('.language')
   = @repository.language
 p
+  strong.me-2 = t('.branch')
+  = @repository.default_branch
+p
   strong.me-2 = t('.repo_created_at')
   - if @repository.repo_created_at
     = l(@repository.repo_created_at, format: :long)

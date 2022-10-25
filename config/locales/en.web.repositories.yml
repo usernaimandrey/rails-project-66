@@ -26,6 +26,7 @@ en:
         cache_reset: Reset cache!
         new_repository: New Repository
       show:
+        branch: "Default Branch:"
         check: Check
         check_passed: Result
         created_at: Created at

@@ -26,7 +26,7 @@ table.table.table-striped.table-hover.mb-5
       - @errors.each do |error|
         - unless error_path == error.file_path
           tr
-            td = link_to error.file_path, normalize_file_path(@check.repository)
+            td = link_to error.file_path, normalize_file_path(@check.repository, error.file_path)
           - error_path = error.file_path
         tr
           td = error.message

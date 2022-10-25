@@ -13,6 +13,7 @@ class CreateRepositoryService
         clone_url: response[:clone_url],
         name: response[:name],
         language: response[:language]&.downcase,
+        default_branch: response[:default_branch],
         repo_created_at: response[:created_at],
         repo_updated_at: response[:updated_at]
       }

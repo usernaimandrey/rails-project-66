@@ -26,6 +26,7 @@ ru:
         cache_reset: Сбросить кеш!
         new_repository: Новый репозиторий
       show:
+        branch: "Ветка по умолчанию:"
         check: Проверить
         check_passed: Результат проверки
         created_at: Дата Создания
