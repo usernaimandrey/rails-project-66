@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
-class CreateRepositoryService
+class UpdateRepositoryService
   class << self
     def call(repo_id)
       repo = Repository.find(repo_id)
-      user = repo.user
-      github_api = ApplicationContainer[:github_api]
-      response = github_api.get_repo(user, repo)
-      github_api.setup_hook(repo)
+      return unless repo
+
+      github_api = ApplicationContainer[:github_api].call(repo.user, repo)
+
+      response = github_api.fetch_repo
+      github_api.setup_hook
 
       attr = {
         github_id: repo.github_id,

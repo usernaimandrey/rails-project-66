@@ -25,7 +25,7 @@ module Web
       github_id = permitted_params[:github_id]
       @repository = current_user.repositories.build(github_id: github_id)
       if @repository.save
-        LoadRepositoryJob.perform_later(@repository.id)
+        UpdateRepositoryJob.perform_later(@repository.id)
         redirect_to repositories_path, notice: t('.success')
       else
         flash[:alert] = @repository.errors.full_messages.join

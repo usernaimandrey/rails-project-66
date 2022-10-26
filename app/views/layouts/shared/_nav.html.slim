@@ -17,7 +17,7 @@
           = link_to(t('menu'), '#', class: 'nav-link dropdown-toggle', id: 'navbarDropdown', role: 'button', 'data-bs-toggle': 'dropdown', 'aria-expanded': 'false')
           ul.dropdown-menu[aria-labelledby='navbarDropdown']
             li
-              = link_to current_user&.nickname, repositories_path, class: 'dropdown-item'
+              = link_to current_user.nickname, repositories_path, class: 'dropdown-item'
 
             li
               = link_to t('sign_out'), session_path, method: :delete, class: 'dropdown-item'

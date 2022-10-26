@@ -11,7 +11,8 @@ class CheckLinterService
       repo_name = repo.name
       ApplicationContainer[:git_clone].git_clone(clone_url, repo_name)
       result_linter_check = ApplicationContainer[repo.language.downcase.to_sym].check(repo_name)
-      last_commit_data = ApplicationContainer[:github_api].fetch_last_commit_ref(repo.user.token, repo.full_name)
+
+      last_commit_data = ApplicationContainer[:github_api].call(repo.user, repo).fetch_last_commit_ref
 
       if result_linter_check.empty?
         ActiveRecord::Base.transaction do
