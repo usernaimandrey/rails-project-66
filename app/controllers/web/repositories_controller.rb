@@ -34,8 +34,9 @@ module Web
     end
 
     def clear_cache
-      Rails.cache.delete("#{current_user.cache_key}-#{current_user.id}")
+      Rails.cache.delete(current_user.cache_key)
       flash[:notice] = t('.success')
+
       redirect_to new_repository_path
     end
 

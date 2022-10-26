@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class LinterCheckRuby
+  extend DirLoadRepo
+
   class << self
     def check(repo_name)
       repo_path = "#{path}/#{repo_name}"
@@ -10,10 +12,6 @@ class LinterCheckRuby
       return stdout_str unless status.to_i.zero?
 
       ''
-    end
-
-    def path
-      Rails.root.join(DIR_REPO)
     end
   end
 end

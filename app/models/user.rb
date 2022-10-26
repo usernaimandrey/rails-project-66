@@ -7,14 +7,9 @@ class User < ApplicationRecord
 
   has_many :repositories, dependent: :destroy
 
-  def guest?
-    false
-  end
-
   def links
-    client = ApplicationContainer[:fetch_links]
     Rails.cache.fetch(cache_key, expires_in: 1.hour) do
-      client.fetch(self)
+      ApplicationContainer[:github_api].fetch_links_github(self)
     end
   end
 

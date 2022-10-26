@@ -3,9 +3,11 @@
 class CreateRepositoryService
   class << self
     def call(repo_id)
-      repo = Repository.find_by(id: repo_id)
+      repo = Repository.find(repo_id)
       user = repo.user
-      response = ApplicationContainer[:github_api].call(user, repo)
+      github_api = ApplicationContainer[:github_api]
+      response = github_api.get_repo(user, repo)
+      github_api.setup_hook(repo)
 
       attr = {
         github_id: repo.github_id,
@@ -19,8 +21,8 @@ class CreateRepositoryService
       }
 
       repo.update(attr)
-    rescue StandardError
-      Repository.new
+    rescue StandardError => e
+      Rails.logger.debug e
     end
   end
 end

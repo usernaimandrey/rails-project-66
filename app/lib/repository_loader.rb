@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class RepositoryLoader
+  extend DirLoadRepo
+
   class << self
     def git_clone(clone_url, repo_name)
       mkdir
@@ -13,10 +15,6 @@ class RepositoryLoader
     end
 
     private
-
-    def path
-      Rails.root.join(DIR_REPO)
-    end
 
     def mkdir
       return if Dir.exist?(path)
