@@ -18,6 +18,12 @@ class ActiveSupport::TestCase
 
   fixtures :all
 
+  setup do
+    queue_adapter.perform_enqueued_jobs = true
+
+    queue_adapter.perform_enqueued_at_jobs = true
+  end
+
   def load_fixture(filename)
     File.read(File.dirname(__FILE__) + "/fixtures/#{filename}")
   end
@@ -46,11 +52,3 @@ class ActionDispatch::IntegrationTest
     get callback_auth_url('github')
   end
 end
-
-# class ActiveSupport::TestCase
-#   setup do
-#     queue_adapter.perform_enqueued_jobs = true
-
-#     queue_adapter.perform_enqueued_at_jobs = true
-#   end
-# end

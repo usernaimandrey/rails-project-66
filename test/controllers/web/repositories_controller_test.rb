@@ -37,6 +37,7 @@ class Web::RepositoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test '#create' do
+    github_response = load_fixture('files/response.json')
     attr = {
       github_id: 1_296_269
     }
@@ -46,6 +47,7 @@ class Web::RepositoriesControllerTest < ActionDispatch::IntegrationTest
 
     assert { new_repo }
     assert_redirected_to repositories_path default_url_options
-    assert_enqueued_with job: UpdateRepositoryJob
+    assert { new_repo.name == JSON.parse(github_response)['name'] }
+    assert { new_repo.full_name == JSON.parse(github_response)['full_name'] }
   end
 end

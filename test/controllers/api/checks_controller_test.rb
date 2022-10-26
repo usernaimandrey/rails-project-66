@@ -13,7 +13,11 @@ class Api::ChecksControllerTest < ActionDispatch::IntegrationTest
       post api_checks_path params: { repository: attributes }
     end
 
+    check = repo.checks.last
+
+    assert { check.finished? }
+    assert { check.passed == true }
+    assert_not(check.errors_count)
     assert_response 200
-    assert_enqueued_with job: CheckLinterJob
   end
 end

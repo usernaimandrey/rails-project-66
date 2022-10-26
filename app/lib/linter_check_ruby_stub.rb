@@ -3,17 +3,25 @@
 class LinterCheckRubyStub
   class << self
     def check(_repo_name)
-      # repo_path = "#{path}/#{repo_name}"
-      # conf_path = Rails.root.join('config/.rubocop.yml')
-      # command = "rubocop --format json --config #{conf_path} #{repo_path}"
-      # stdout_str, status = Open3.capture2(command)
-      # return stdout_str unless status.to_i.zero?
-
-      ''
-    end
-
-    def path
-      'test/fixtures/files'
+      JSON.generate({
+                      metadata: {
+                        rubocop_version: '1.12.0'
+                      },
+                      files: [{
+                        path: 'lib/bar.rb',
+                        offenses: [{
+                          severity: 'convention',
+                          message: 'Line is too long. [81/80]',
+                          cop_name: 'LineLength',
+                          corrected: true,
+                          location: {
+                            line: 546,
+                            column: 80,
+                            length: 4
+                          }
+                        }]
+                      }]
+                    })
     end
   end
 end

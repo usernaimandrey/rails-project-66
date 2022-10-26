@@ -28,7 +28,24 @@ class Web::Repositories::ChecksControllerTest < ActionDispatch::IntegrationTest
       post repository_checks_path(@repo_valid)
     end
 
+    check = @repo_valid.checks.last
+
     assert_redirected_to @repo_valid
-    assert_enqueued_with job: CheckLinterJob
+    assert { check.finished? }
+    assert { check.passed == true }
+    assert_not(check.errors_count)
+  end
+
+  test '#create repo invalid' do
+    repo = repositories(:repo_rb_invalid)
+
+    assert_difference 'repo.checks.count' do
+      post repository_checks_path(repo)
+    end
+
+    check = repo.checks.last
+    assert { check.finished? }
+    assert { check.passed == false }
+    assert { check.errors_count }
   end
 end
