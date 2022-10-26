@@ -10,8 +10,6 @@ class RepositoryLoader
       rm_dir(repo_path)
 
       Open3.capture2("git clone #{clone_url} #{repo_path}")
-
-      rm_config_lint(repo_path)
     end
 
     private
@@ -26,13 +24,6 @@ class RepositoryLoader
       return unless Dir.exist?(dir)
 
       FileUtils.rm_r(dir, force: true)
-    end
-
-    def rm_config_lint(repo_path)
-      Dir.entries(repo_path).each do |file|
-        delete_list = %w[package.json package-lock.json .eslintrc.yml .rubocop.yml]
-        FileUtils.rm("#{repo_path}/#{file}") if delete_list.include?(file)
-      end
     end
   end
 end
