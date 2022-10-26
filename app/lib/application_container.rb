@@ -7,7 +7,7 @@ class ApplicationContainer
     register :git_clone, -> { RepositoryLoaderStub }
     register :javascript, -> { LinterCheckJavascriptStub }
     register :ruby, -> { LinterCheckRubyStub }
-    register :github_api, ->(user, repo) { GithubApiStub.new(user, repo) }
+    register :github_api, ->(user, repo = nil) { GithubApiStub.new(user, repo) }
   else
     register :git_clone, -> { RepositoryLoader }
     register :javascript, -> { LinterCheckJavascript }
