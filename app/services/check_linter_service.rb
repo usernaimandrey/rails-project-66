@@ -10,13 +10,14 @@ class CheckLinterService
       clone_url = repo.clone_url
       repo_name = repo.name
       ApplicationContainer[:git_clone].git_clone(clone_url, repo_name)
+      check.check!
       result_linter_check = ApplicationContainer[repo.language.downcase.to_sym].check(repo_name)
 
       last_commit_data = ApplicationContainer[:github_api].call(repo.user, repo).fetch_last_commit_ref
 
       if result_linter_check.empty?
         ActiveRecord::Base.transaction do
-          check.update({ passed: 'true' }.merge(last_commit_data))
+          check.update({ passed: true }.merge(last_commit_data))
           check.finish!
         end
         return
@@ -36,6 +37,7 @@ class CheckLinterService
             linter_errors.save!
           end
         end
+        check.passed = false
         check.finish!
         check.update({ passed: 'false' }.merge(last_commit_data))
       end

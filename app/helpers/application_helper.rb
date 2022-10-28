@@ -21,4 +21,10 @@ module ApplicationHelper
     normalize_path = file_path.split(repo.name).last
     "https://github.com/#{full_name}/tree/#{branch}#{normalize_path}"
   end
+
+  def check_status(check)
+    return t('.no_check') if check.nil?
+
+    check.passed? ? t('.success') : t('.failure')
+  end
 end

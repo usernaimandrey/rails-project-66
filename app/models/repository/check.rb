@@ -2,20 +2,20 @@
 
 class Repository::Check < ApplicationRecord
   include AASM
-  extend Enumerize
-
-  validates :passed, presence: true
-
-  enumerize :passed, in: %w[true false], default: 'false'
 
   belongs_to :repository
 
   has_many :linter_errors, dependent: :destroy
 
   aasm do
-    state :checking, initial: true
+    state :created, initial: true
+    state :checking
     state :finished
     state :failed
+
+    event :check do
+      transitions from: :created, to: :checking
+    end
 
     event :finish do
       transitions from: :checking, to: :finished

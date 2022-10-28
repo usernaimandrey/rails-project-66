@@ -4,6 +4,8 @@ ru:
     repositories:
       index:
         check: Последняя проверка
+        failure: Провал
+        success: Успех
         first_repo: Добавьте свой первый репозиторий
         name: Имя
         new_repository: Новый репозиторий
@@ -30,6 +32,8 @@ ru:
         check: Проверить
         check_passed: Результат проверки
         created_at: Дата Создания
+        failure: Провал
+        success: Успех
         language: 'Язык:'
         no_checks: Нет проверок
         not_found: Такого репозитория не сущевствует

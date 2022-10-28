@@ -8,6 +8,7 @@ ru:
         name: Название репозитория
       repository/check:
         aasm_state: Состояние
+        aasm_state/created: Созданна
         aasm_state/checking: Проверяется
         aasm_state/finished: Закончено
         aasm_state/failed: Ошибка

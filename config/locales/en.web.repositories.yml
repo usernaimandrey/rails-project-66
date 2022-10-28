@@ -4,6 +4,8 @@ en:
     repositories:
       index:
         check: Last check passed
+        failure: Failure
+        success: Success
         first_repo: Add your first repo
         name: Name
         new_repository: Add repo
@@ -30,6 +32,8 @@ en:
         check: Check
         check_passed: Result
         created_at: Created at
+        failure: Failure
+        success: Success
         no_checks: no checks
         not_found: Repositories not found
         language: 'Language:'
