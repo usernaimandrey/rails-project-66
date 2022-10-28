@@ -11,7 +11,7 @@ class UpdateRepositoryService
       response = github_api.fetch_repo
       github_api.setup_hook
 
-      attr = {
+      attrs = {
         github_id: repo.github_id,
         full_name: response[:full_name],
         clone_url: response[:clone_url],
@@ -22,7 +22,7 @@ class UpdateRepositoryService
         repo_updated_at: response[:updated_at]
       }
 
-      repo.update(attr)
+      repo.update(attrs)
     rescue StandardError => e
       Rails.logger.debug e
     end
