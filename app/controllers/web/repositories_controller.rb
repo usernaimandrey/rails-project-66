@@ -3,7 +3,6 @@
 module Web
   class RepositoriesController < ApplicationController
     before_action :authenticate_user!
-    after_action :verify_authorized, only: %i[show]
 
     def index
       @repositories = current_user.repositories.includes(:checks).order(created_at: :desc)
@@ -13,7 +12,6 @@ module Web
       @repository = current_user.repositories.find(params[:id])
 
       @checks = @repository.checks.order(created_at: :desc)
-      authorize @repository
     end
 
     def new

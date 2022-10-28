@@ -2,10 +2,6 @@
 
 class Repository
   class CheckPolicy < ApplicationPolicy
-    def show?
-      author?
-    end
-
     def create?
       author?
     end
