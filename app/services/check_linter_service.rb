@@ -8,8 +8,8 @@ class CheckLinterService
       check = Repository::Check.find_by(id: check_id)
       repo = check.repository
       clone_url = repo.clone_url
-      # repo_path = "#{Rails.root.join(DIR_REPO)}/#{repo.name}"
-      repo_path = nil
+      repo_path = "#{Rails.root.join(DIR_REPO)}/#{repo.name}"
+
       ApplicationContainer[:repository_loader].git_clone(clone_url, repo_path)
       check.check!
       result_linter_check = ApplicationContainer[repo.language.downcase.to_sym].check(repo_path)
@@ -42,8 +42,8 @@ class CheckLinterService
         check.update({ passed: false }.merge(last_commit_data))
       end
       CheckLinterStatusMailer.with(user: repo.user, check: check).send_mail.deliver_later
-      # rescue StandardError
-      #   check.fail!
+    rescue StandardError
+      check.fail!
     end
   end
 end
