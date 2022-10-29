@@ -5,7 +5,7 @@ module Web
     after_action :verify_authorized, only: :create
     def show
       @check = resource_repo.checks.includes(:linter_errors).find(params[:id])
-      @errors = @check.linter_errors.distinct(:file_path)
+      @errors = @check.linter_errors.group_by(&:file_path)
     end
 
     def create

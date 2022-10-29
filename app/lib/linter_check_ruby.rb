@@ -1,11 +1,8 @@
 # frozen_string_literal: true
 
 class LinterCheckRuby
-  extend DirLoadRepo
-
   class << self
-    def check(repo_name)
-      repo_path = "#{path}/#{repo_name}"
+    def check(repo_path)
       conf_path = Rails.root.join('config/.rubocop.yml')
       command = "rubocop --format json --config #{conf_path} #{repo_path}"
       stdout_str, status = Open3.capture2(command)

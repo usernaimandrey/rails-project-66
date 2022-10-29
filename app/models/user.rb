@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   def links
     Rails.cache.fetch(cache_key, expires_in: 1.hour) do
-      ApplicationContainer[:github_api].call(self).fetch_links_github
+      ApplicationContainer[:github_api].call(token).fetch_links_github
     end
   end
 

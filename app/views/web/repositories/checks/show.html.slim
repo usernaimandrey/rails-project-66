@@ -22,13 +22,12 @@ table.table.table-striped.table-hover.mb-5
         th{ scope = 'col' } = t('.rule')
         th{ scope = 'col' } = t('.line_column')
     tbody
-      - error_path = nil
-      - @errors.each do |error|
-        - unless error_path == error.file_path
-          tr
-            td = link_to error.file_path, normalize_file_path(@check.repository, error.file_path)
-          - error_path = error.file_path
+
+      - @errors.each_key do |file_path|
         tr
-          td = error.message
-          td = error.rule
-          td = error.line_column
+          td = link_to file_path, normalize_file_path(@check.repository, file_path)
+          - @errors[file_path].each do |error|
+            tr
+              td = error.message
+              td = error.rule
+              td = error.line_column

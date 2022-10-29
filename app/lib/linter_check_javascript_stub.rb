@@ -2,7 +2,7 @@
 
 class LinterCheckJavascriptStub
   class << self
-    def check(_repo_name)
+    def check(_repo_path)
       ''
     end
   end

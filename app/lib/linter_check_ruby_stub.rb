@@ -2,7 +2,7 @@
 
 class LinterCheckRubyStub
   class << self
-    def check(_repo_name)
+    def check(_repo_path)
       JSON.generate({
                       metadata: {
                         rubocop_version: '1.12.0'

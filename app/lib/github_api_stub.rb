@@ -1,14 +1,11 @@
 # frozen_string_literal: true
 
 class GithubApiStub
-  attr_reader :repo, :user, :clien
-
-  def initialize(user, repo = nil)
-    @repo = repo
-    @user = user
+  def initialize(_token)
+    @clien = nil
   end
 
-  def fetch_repo
+  def fetch_repo(_github_id)
     {
       github_id: 1_296_269,
       full_name: 'octocat/Hello-World',
@@ -20,13 +17,13 @@ class GithubApiStub
     }
   end
 
-  def setup_hook; end
+  def setup_hook(_github_id); end
 
   def fetch_links_github
     [['octocat/Hello-World'], [1_296_269]]
   end
 
-  def fetch_last_commit_ref
+  def fetch_last_commit_ref(_full_name)
     { last_commit_sha: '5fgrt', last_commit_url: 'https://github.com/commits/5fgrt' }
   end
 end

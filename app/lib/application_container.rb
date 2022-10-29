@@ -4,16 +4,14 @@ class ApplicationContainer
   extend Dry::Container::Mixin
 
   if Rails.env.test?
-    register :git_clone, -> { RepositoryLoaderStub }
+    register :repository_loader, -> { RepositoryLoaderStub }
     register :javascript, -> { LinterCheckJavascriptStub }
     register :ruby, -> { LinterCheckRubyStub }
-    register :github_api, ->(user, repo = nil) { GithubApiStub.new(user, repo) }
+    register :github_api, ->(token) { GithubApiStub.new(token) }
   else
-    register :git_clone, -> { RepositoryLoader }
+    register :repository_loader, -> { RepositoryLoader }
     register :javascript, -> { LinterCheckJavascript }
     register :ruby, -> { LinterCheckRuby }
-    register :github_api, ->(user, repo = nil) { GithubApi.new(user, repo) }
+    register :github_api, ->(token) { GithubApi.new(token) }
   end
-
-  register :octokit, ->(token) { Octokit::Client.new(access_token: token, auto_paginate: true) }
 end

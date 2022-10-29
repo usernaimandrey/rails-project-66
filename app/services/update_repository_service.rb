@@ -6,10 +6,10 @@ class UpdateRepositoryService
       repo = Repository.find(repo_id)
       return unless repo
 
-      github_api = ApplicationContainer[:github_api].call(repo.user, repo)
+      github_api = ApplicationContainer[:github_api].call(repo.user.token)
 
-      response = github_api.fetch_repo
-      github_api.setup_hook
+      response = github_api.fetch_repo(repo.github_id)
+      github_api.setup_hook(repo.github_id)
 
       attrs = {
         github_id: repo.github_id,
