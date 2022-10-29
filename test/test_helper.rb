@@ -12,8 +12,6 @@ WebMock.disable_net_connect!
 OmniAuth.config.test_mode = true
 
 class ActiveSupport::TestCase
-  include FactoryBot::Syntax::Methods
-
   parallelize(workers: :number_of_processors)
 
   fixtures :all

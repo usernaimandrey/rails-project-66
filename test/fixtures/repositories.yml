@@ -1,6 +1,6 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-repo_js_valid:
+one:
   full_name: ivan/repo
   clone_url: http://github.git
   name: repo_js_valid
@@ -10,32 +10,12 @@ repo_js_valid:
   github_id: 1
   user: one
 
-repo_js_invalid:
-  full_name: serg/repo
-  clone_url: http://github.git
-  name: repo_js_invalid
-  language: javascript
+no_check:
+  full_name: ivan/repojs
+  clone_url: http://github.git/js
+  name: repo_js_nocheck
+  language: ruby
   repo_created_at: <%= Time.zone.now - 10.days %>
   repo_updated_at: <%= Time.zone.now - 5.days %>
   github_id: 2
-  user: one
-
-repo_rb_valid:
-  full_name: ivan/ipgeobase
-  clone_url: http://github.git
-  name: repo_rb_valid
-  language: ruby
-  repo_created_at: <%= Time.zone.now - 10.days %>
-  repo_updated_at: <%= Time.zone.now - 5.days %>
-  github_id: 3
-  user: one
-
-repo_rb_invalid:
-  full_name: serg/ruby
-  clone_url: http://github.git
-  name: repo_rb_invalid
-  language: ruby
-  repo_created_at: <%= Time.zone.now - 10.days %>
-  repo_updated_at: <%= Time.zone.now - 5.days %>
-  github_id: 4
   user: one

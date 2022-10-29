@@ -110,11 +110,6 @@ GEM
     enumerize (2.5.0)
       activesupport (>= 3.2)
     erubi (1.11.0)
-    factory_bot (6.2.1)
-      activesupport (>= 5.0.0)
-    factory_bot_rails (6.2.0)
-      factory_bot (~> 6.2.0)
-      railties (>= 5.0.0)
     faraday (2.5.2)
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
@@ -342,7 +337,6 @@ DEPENDENCIES
   dotenv-rails
   dry-container
   enumerize
-  factory_bot_rails (~> 6.2.0)
   faker!
   jbuilder (~> 2.7)
   listen (~> 3.3)

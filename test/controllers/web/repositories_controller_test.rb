@@ -4,7 +4,8 @@ require 'test_helper'
 
 class Web::RepositoriesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @user = FactoryBot.create(:user)
+    @user = users(:one)
+    @repo = repositories(:one)
     sign_in @user
   end
 
@@ -23,9 +24,7 @@ class Web::RepositoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test '#show' do
-    repo = FactoryBot.create(:repository, user: @user)
-
-    get repository_path(repo)
+    get repository_path(@repo)
 
     assert_response :success
   end
@@ -37,17 +36,16 @@ class Web::RepositoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test '#create' do
-    github_response = load_fixture('files/response.json')
-    attr = {
+    attrs = {
       github_id: 1_296_269
     }
 
-    post repositories_path, params: { repository: attr }
-    new_repo = Repository.find_by(attr)
+    post repositories_path, params: { repository: attrs }
+    new_repo = Repository.find_by(attrs)
 
     assert { new_repo }
     assert_redirected_to repositories_path default_url_options
-    assert { new_repo.name == JSON.parse(github_response)['name'] }
-    assert { new_repo.full_name == JSON.parse(github_response)['full_name'] }
+    assert { new_repo.github_id == attrs[:github_id] }
+    assert { new_repo.full_name == 'octocat/Hello-World' }
   end
 end

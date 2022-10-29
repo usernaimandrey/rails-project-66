@@ -6,16 +6,4 @@ DEFAULTS: &DEFAULTS
 
 one:
   <<: *DEFAULTS
-  repository: repo_js_valid
-
-two:
-  <<: *DEFAULTS
-  repository: repo_js_invalid
-
-three:
-  <<: *DEFAULTS
-  repository: repo_rb_valid
-
-four:
-  <<: *DEFAULTS
-  repository: repo_rb_invalid
+  repository: one

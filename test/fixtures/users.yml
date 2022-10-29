@@ -6,10 +6,3 @@ one:
   email: ivan@gmail.com
   token: <%= SecureRandom.urlsafe_base64 %>
   image_url: https://github.com/ivan
-
-two:
-  nickname: serg
-  name: Sergey
-  email: serg@yandex.ru
-  token: <%= SecureRandom.urlsafe_base64 %>
-  image_url: https://github.com/serg
