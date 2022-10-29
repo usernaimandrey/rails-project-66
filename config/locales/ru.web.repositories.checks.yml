@@ -4,6 +4,8 @@ ru:
       checks:
         show:
           check_title: "Проверка #%{id}"
+          failure: Провал
+          success: Успех
           status: "Статус: %{state}"
           check_passed: "Результат проверки: %{check_passed}"
           issues: "Количество ошибок: %{count}"

@@ -2,6 +2,8 @@
 
 module Deserializer
   def javascript_deserialize(json)
+    return [] if json.empty?
+
     JSON.parse(json).map do |data_check|
       file_path = data_check['filePath']
       errors = data_check['messages'].map do |message|
@@ -16,6 +18,8 @@ module Deserializer
   end
 
   def ruby_deserialize(json)
+    return [] if json.empty?
+
     JSON.parse(json)['files']
         .filter { |data_check| data_check['offenses'].any? }
         .map do |data_check|
