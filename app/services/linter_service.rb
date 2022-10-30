@@ -56,7 +56,7 @@ class LinterService
     end
 
     def send_mail(user, check)
-      return nil unless check.passed?
+      return nil if check.passed?
 
       CheckLinterStatusMailer.with(user: user, check: check).send_mail.deliver_later
     end
