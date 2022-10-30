@@ -33,6 +33,6 @@ class Web::Repositories::ChecksControllerTest < ActionDispatch::IntegrationTest
     assert { check.repository_id == repo.id }
     assert { check.finished? }
     assert { check.passed == true }
-    assert_not(check.errors_count)
+    assert { check.count_errors.nil? }
   end
 end

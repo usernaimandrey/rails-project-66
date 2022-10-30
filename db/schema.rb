@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_28_232956) do
+ActiveRecord::Schema.define(version: 2022_10_30_211303) do
 
   create_table "repositories", force: :cascade do |t|
     t.string "full_name"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2022_10_28_232956) do
     t.integer "repository_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "errors_count"
+    t.integer "count_errors"
     t.string "last_commit_sha"
     t.string "last_commit_url"
     t.boolean "passed"

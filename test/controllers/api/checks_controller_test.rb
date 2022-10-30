@@ -12,10 +12,9 @@ class Api::ChecksControllerTest < ActionDispatch::IntegrationTest
 
     check = repo.checks.last
 
-    assert { repo.id == check.repository_id }
     assert { check.finished? }
     assert { check.passed == true }
-    assert_not(check.errors_count)
+    assert { check.count_errors.nil? }
     assert_response 200
   end
 end

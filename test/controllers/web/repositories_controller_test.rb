@@ -41,11 +41,9 @@ class Web::RepositoriesControllerTest < ActionDispatch::IntegrationTest
     }
 
     post repositories_path, params: { repository: attrs }
-    new_repo = Repository.find_by(attrs)
+    new_repo = Repository.find_by(attrs.merge({ user_id: @user.id, full_name: 'octocat/Hello-World' }))
 
     assert { new_repo }
     assert_redirected_to repositories_path default_url_options
-    assert { new_repo.github_id == attrs[:github_id] }
-    assert { new_repo.full_name == 'octocat/Hello-World' }
   end
 end

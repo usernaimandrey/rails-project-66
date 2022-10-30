@@ -8,7 +8,7 @@ p = t('.status', state: @check.aasm.human_state)
 
 p = t('.check_passed', check_passed: check_status(@check))
 
-p = t('.issues', count: @check.errors_count)
+p = t('.issues', count: @check.count_errors)
 
 .d-flex
   = link_to t('back'), :back, class: 'btn btn-outline-primary'

@@ -3,5 +3,5 @@
 class Repository::Check::LinterError < ApplicationRecord
   validates :file_path, presence: true
 
-  belongs_to :check, counter_cache: :errors_count
+  belongs_to :check, counter_cache: :count_errors
 end

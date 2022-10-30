@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Deserializer
-  def javascript_deserialize(json)
+  def parse_javascript(json)
     return [] if json.empty?
 
     JSON.parse(json).map do |data_check|
@@ -17,7 +17,7 @@ module Deserializer
     end
   end
 
-  def ruby_deserialize(json)
+  def parse_ruby(json)
     return [] if json.empty?
 
     JSON.parse(json)['files']
