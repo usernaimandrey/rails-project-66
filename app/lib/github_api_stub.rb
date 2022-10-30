@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 class GithubApiStub
-  def initialize(_token)
-    @clien = nil
-  end
+  def initialize(*); end
 
   def fetch_repo(_github_id)
     {
