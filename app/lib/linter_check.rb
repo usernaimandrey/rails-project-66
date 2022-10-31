@@ -15,9 +15,9 @@ class LinterCheck
     end
 
     def run_check(command)
-      bush_runner = ApplicationContainer[:bash_runner]
-      stdout_str, status = bush_runner.run(command)
-      return stdout_str unless bush_runner.success?(status)
+      bash_runner = ApplicationContainer[:bash_runner]
+      stdout_str, status = bash_runner.run(command)
+      return stdout_str unless bash_runner.success?(status)
 
       ''
     end

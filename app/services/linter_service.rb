@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class LinterService
-  extend Deserializer
-
   class << self
     def call(check_id)
       check = Repository::Check.find_by(id: check_id)
@@ -29,7 +27,7 @@ class LinterService
     end
 
     def save_errors(repo, linter_result, check)
-      public_send("parse_#{repo.language.downcase}", linter_result).each do |data_check|
+      Deserializer.public_send("parse_#{repo.language.downcase}", linter_result).each do |data_check|
         file_path = data_check[:file_path]
         data_check[:errors].each do |error|
           linter_error = check.linter_errors.build(
@@ -61,4 +59,5 @@ class LinterService
       CheckLinterStatusMailer.with(user: user, check: check).send_mail.deliver_later
     end
   end
+  private_class_method :save_errors, :last_commit_data, :git_clone, :send_mail
 end
