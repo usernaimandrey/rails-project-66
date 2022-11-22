@@ -46,7 +46,7 @@ hr
             td = link_to check.last_commit_sha, check.last_commit_url
           - else
             td -
-          td = check_status(check)
+          td = check.created? || check.checking? ? t('.in_process') : check_status(check)
           td = l check.created_at, format: :short
 - else
   = t('.no_checks')

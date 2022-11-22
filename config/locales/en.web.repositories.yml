@@ -33,6 +33,7 @@ en:
         check_passed: Result
         created_at: Created at
         failure: Failure
+        in_process: In Process
         success: Success
         no_checks: no checks
         not_found: Repositories not found

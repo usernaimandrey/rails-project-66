@@ -33,6 +33,7 @@ ru:
         check_passed: Результат проверки
         created_at: Дата Создания
         failure: Провал
+        in_process: В процессе
         success: Успех
         language: 'Язык:'
         no_checks: Нет проверок

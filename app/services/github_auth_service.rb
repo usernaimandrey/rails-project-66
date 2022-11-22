@@ -10,7 +10,8 @@ class GithubAuthService
       user.token = auth.credentials.token
 
       user
-    rescue StandardError
+    rescue StandardError => e
+      Rails.logger.debug(e)
       User.new
     end
   end
