@@ -13,6 +13,8 @@ gem 'sass-rails', '>= 6'
 
 gem 'webpacker', '~> 5.0'
 
+gem 'faraday-retry'
+
 gem 'turbolinks', '~> 5'
 
 gem 'jbuilder', '~> 2.7'
