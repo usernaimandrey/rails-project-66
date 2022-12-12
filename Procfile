@@ -1,4 +1,1 @@
-# web: bundle exec puma -t 5:5 -p ${PORT:-3000} -e ${RACK_ENV:-development}
-web: bundle exec puma -C config/puma.rb
-frontend: bin/webpack-dev-server
-release: bin/rake db:migrate
+web: bin/rake db:migrate && bin/rails server -b 0.0.0.0 -p {PORT: -3000} & bin/webpack-dev-server
